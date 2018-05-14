@@ -28,6 +28,8 @@ namespace DSEDFinalProjectTripPlanner
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<TripContext>(options =>
+                options.UseSqlite("Data Source=trip.db"));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -52,6 +54,7 @@ namespace DSEDFinalProjectTripPlanner
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
 
             app.UseStaticFiles();
 
