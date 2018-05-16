@@ -1,38 +1,51 @@
-﻿@model IEnumerable<DSEDFinalProjectTripPlanner.Models.Trip>
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model IEnumerable<DSEDFinalProjectTripPlanner.Models.Trip>
 
 @{
     ViewData["Title"] = "Index";
+    ViewData["Header"] = "Upcoming Trips";
 }
 
-<h2>Index</h2>
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DestinationCity)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DestinationCountry)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.StartDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FinishDate)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-12">
+        <div clas="destination">
+            <hr />
+            <div class="col-md-7">
+                <h3>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>
+                </h3>
+            </div>
+            <div class="col-md-5">
+                <p>@Html.DisplayFor(modelItem => item.DestinationCity), @Html.DisplayFor(modelItem => item.DestinationCountry)</p>
+                <p>
+                    @Html.DisplayFor(modelItem => item.StartDate.Day)/@Html.DisplayFor(modelItem => item.StartDate.Month)/@Html.DisplayFor(modelItem => item.StartDate.Year)
+                    -
+                    @Html.DisplayFor(modelItem => item.FinishDate.Day)/@Html.DisplayFor(modelItem => item.FinishDate.Month)/@Html.DisplayFor(modelItem => item.FinishDate.Year)
+                </p>
+                <p>
+                    @* @Html.DisplayFor(modelItem => item.TotalDaysAway)*@
+                    @DatabaseManager.NumOfDaysAway(item.FinishDate, item.StartDate) days, @DatabaseManager.NumOfDaysToGo(item.StartDate, DateTime.Now) days to go.
+                </p>
+                <p>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    @*<tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -53,7 +66,12 @@
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
-        </tr>
+        </tr>*@
 }
-    </tbody>
-</table>
+@*</tbody>
+    </table>*@
+
+@*@{
+        Trip _myTrip = new Trip();
+        _myTrip.StartDate.ToShortDateString();
+    }*@

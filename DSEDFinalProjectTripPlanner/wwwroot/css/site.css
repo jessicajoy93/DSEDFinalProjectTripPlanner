@@ -33,3 +33,21 @@
         display: none;
     }
 }
+
+/* Header */
+.header {
+    text-align: center;
+}
+
+
+.clear {
+    clear: both;
+}
+
+.required {
+    color: red;
+}
+
+.destination {
+    background-color: gray;
+}

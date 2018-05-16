@@ -11,7 +11,7 @@ using System;
 namespace DSEDFinalProjectTripPlanner.Migrations
 {
     [DbContext(typeof(TripContext))]
-    [Migration("20180514024108_init")]
+    [Migration("20180515212753_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -323,15 +323,22 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("DestinationCity");
+                    b.Property<string>("Description");
 
-                    b.Property<string>("DestinationCountry");
+                    b.Property<string>("DestinationCity")
+                        .IsRequired();
+
+                    b.Property<string>("DestinationCountry")
+                        .IsRequired();
 
                     b.Property<DateTime>("FinishDate");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<DateTime>("StartDate");
+
+                    b.Property<int>("TotalDaysAway");
 
                     b.HasKey("Id");
 

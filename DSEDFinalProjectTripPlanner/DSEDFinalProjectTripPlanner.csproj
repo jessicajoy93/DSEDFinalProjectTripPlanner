@@ -5,8 +5,18 @@
     <UserSecretsId>aspnet-DSEDFinalProjectTripPlanner-27F5BFFD-CC55-4923-BB1D-98D5F0F173A8</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20180514024108_init.cs" />
+    <Compile Remove="Migrations\20180514024108_init.Designer.cs" />
+    <Compile Remove="Migrations\20180514031257_init.cs" />
+    <Compile Remove="Migrations\20180514031257_init.Designer.cs" />
+    <Compile Remove="Migrations\20180514043515_shortdates.cs" />
+    <Compile Remove="Migrations\20180514043515_shortdates.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
+    <PackageReference Include="Humanizer" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" PrivateAssets="All" />

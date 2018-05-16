@@ -13,9 +13,11 @@ namespace DSEDFinalProjectTripPlanner.Controllers
     public class TripsController : Controller
     {
         private readonly TripContext _context;
+        Trip _myTrip = new Trip();
 
         public TripsController(TripContext context)
         {
+
             _context = context;
         }
 
@@ -54,11 +56,13 @@ namespace DSEDFinalProjectTripPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate")] Trip trip)
+        public async Task<IActionResult> Create([Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate,Description,TotalDaysAway")] Trip trip)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(trip);
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

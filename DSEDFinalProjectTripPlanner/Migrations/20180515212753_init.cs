@@ -196,11 +196,13 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    DestinationCity = table.Column<string>(nullable: true),
-                    DestinationCountry = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    DestinationCity = table.Column<string>(nullable: false),
+                    DestinationCountry = table.Column<string>(nullable: false),
                     FinishDate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    StartDate = table.Column<DateTime>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
+                    StartDate = table.Column<DateTime>(nullable: false),
+                    TotalDaysAway = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

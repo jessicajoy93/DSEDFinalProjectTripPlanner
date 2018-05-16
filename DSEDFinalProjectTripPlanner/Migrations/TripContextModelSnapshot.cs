@@ -322,15 +322,22 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("DestinationCity");
+                    b.Property<string>("Description");
 
-                    b.Property<string>("DestinationCountry");
+                    b.Property<string>("DestinationCity")
+                        .IsRequired();
+
+                    b.Property<string>("DestinationCountry")
+                        .IsRequired();
 
                     b.Property<DateTime>("FinishDate");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<DateTime>("StartDate");
+
+                    b.Property<int>("TotalDaysAway");
 
                     b.HasKey("Id");
 

@@ -1,44 +1,46 @@
-﻿@model DSEDFinalProjectTripPlanner.Models.Trip
+﻿@using Humanizer
+@model DSEDFinalProjectTripPlanner.Models.Trip
 
 @{
     ViewData["Title"] = "Details";
+    ViewData["Header"] = "Upcoming Trip";
+
+    Trip _myTrip = new Trip();
 }
 
-<h2>Details</h2>
-
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
+</div>
 <div>
-    <h4>Trip</h4>
+    <h4>
+        @Html.DisplayFor(model => model.DestinationCity),
+        @Html.DisplayFor(model => model.DestinationCountry)
+    </h4>
+    <h4>
+        @Html.DisplayFor(model => model.StartDate.Day)/@Html.DisplayFor(model => model.StartDate.Month)/@Html.DisplayFor(model => model.StartDate.Year)
+        -
+        @Html.DisplayFor(model => model.FinishDate.Day)/@Html.DisplayFor(model => model.FinishDate.Month)/@Html.DisplayFor(model => model.FinishDate.Year)
+    </h4>
+</div>
+<hr />
+<div>
+    <h4>@Html.DisplayFor(model => model.StartDate.DayOfWeek) @Html.DisplayFor(model => model.StartDate.Day)/@Html.DisplayFor(model => model.StartDate.Month)</h4>
+    <h5>@DateTime.Now.ToString("ddd, dd MMM yyyy")</h5>
+    <h6>@Html.DisplayFor(model => model.StartDate.ToString("ddd, dd MMM yyyy"))</h6>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DestinationCity)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DestinationCity)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DestinationCountry)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DestinationCountry)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.StartDate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.StartDate)
+
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.FinishDate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.FinishDate)
+
         </dd>
     </dl>
 </div>
