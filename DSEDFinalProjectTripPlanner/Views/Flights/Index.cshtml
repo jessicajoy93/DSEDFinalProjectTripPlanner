@@ -14,7 +14,7 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-@foreach (var item in Model)
+@foreach (var item in Model.OrderBy(item => item.DepartureDate).ThenBy(item => item.DepartureTime))
 {
     @if (item.TripId == DatabaseManager.TripId)
     {
