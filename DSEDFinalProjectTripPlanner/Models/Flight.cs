@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace DSEDFinalProjectTripPlanner.Models
 {
@@ -32,6 +33,8 @@ namespace DSEDFinalProjectTripPlanner.Models
         public string ArrivalTerminal { get; set; }
         public string ArrivalGate { get; set; }
         public string Seats { get; set; }
+        [Required]
+        public int TripId { get; set; }
 
     }
 }

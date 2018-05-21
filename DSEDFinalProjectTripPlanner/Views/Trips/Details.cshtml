@@ -1,4 +1,5 @@
-﻿@using Humanizer
+﻿@using DSEDFinalProjectTripPlanner.Business
+@using Humanizer
 @model DSEDFinalProjectTripPlanner.Models.Trip
 
 @{
@@ -11,40 +12,26 @@
 <div class="header">
     <h1>@ViewData["Header"]</h1>
     <h2>@Html.DisplayFor(model => model.Name)</h2>
-</div>
-<div>
-    <h4>
+    <h3>
         @Html.DisplayFor(model => model.DestinationCity),
-        @Html.DisplayFor(model => model.DestinationCountry)
-    </h4>
-    <h4>
-        @Html.DisplayFor(model => model.StartDate.Day)/@Html.DisplayFor(model => model.StartDate.Month)/@Html.DisplayFor(model => model.StartDate.Year)
+        @Html.DisplayFor(model => model.DestinationCountry) |
+        @DatabaseManager.StartDate(Model.StartDate)
         -
-        @Html.DisplayFor(model => model.FinishDate.Day)/@Html.DisplayFor(model => model.FinishDate.Month)/@Html.DisplayFor(model => model.FinishDate.Year)
-    </h4>
+        @DatabaseManager.StartDate(Model.FinishDate)
+    </h3>
 </div>
 <hr />
+@if (Model.Description != null)
+{@*this will ony display if Description contains something*@
 <div>
-    <h4>@Html.DisplayFor(model => model.StartDate.DayOfWeek) @Html.DisplayFor(model => model.StartDate.Day)/@Html.DisplayFor(model => model.StartDate.Month)</h4>
-    <h5>@DateTime.Now.ToString("ddd, dd MMM yyyy")</h5>
-    <h6>@Html.DisplayFor(model => model.StartDate.ToString("ddd, dd MMM yyyy"))</h6>
+
+    <p>@Html.DisplayFor(model => model.Description)</p>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
-        <dd>
 
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FinishDate)
-        </dt>
-        <dd>
-
-        </dd>
-    </dl>
 </div>
+}
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-area="" asp-controller="Flights" asp-action="Create">New Flight</a> |
     <a asp-action="Index">Back to List</a>
 </div>

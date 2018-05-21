@@ -51,3 +51,7 @@
 .destination {
     background-color: gray;
 }
+
+#hidden {
+    display: none;
+}

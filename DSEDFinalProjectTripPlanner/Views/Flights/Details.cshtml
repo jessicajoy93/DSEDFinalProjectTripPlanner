@@ -1,0 +1,102 @@
+﻿@model DSEDFinalProjectTripPlanner.Models.Flight
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Flight</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmationNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmationNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Airline)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Airline)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FlightNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureFrom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureFrom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureTerminal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureTerminal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureGate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureGate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalTo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalTo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalTerminal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalTerminal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalGate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalGate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Seats)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Seats)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -8,9 +8,15 @@ namespace DSEDFinalProjectTripPlanner.Business
 {
     public static class DatabaseManager
     {
-        static Trip _myTrip = new Trip();
+        //static Trip _myTrip = new Trip();
         public static int TotalNumDays { get; set; }
         public static int TotalDaysToGo { get; set; }
+        public static string Shortdate { get; set; }
+        public static string Departure { get; set; }
+        public static string Arrival { get; set; }
+        public static string Duration { get; set; }
+        public static int TripId { get; set; }
+
 
         public static int NumOfDaysAway(DateTime fd, DateTime sd)
         {
@@ -24,9 +30,56 @@ namespace DSEDFinalProjectTripPlanner.Business
             return TotalDaysToGo;
         }
 
-        public static void Months()
+        public static object ShortStartDate(DateTime sd)
         {
+            Shortdate = sd.ToString("ddd, dd MMM yyyy");
+            return Shortdate;
+        }
 
+        public static object ShortFinishDate(DateTime fd)
+        {
+            Shortdate = fd.ToString("ddd, dd MMM yyyy");
+            return Shortdate;
+        }
+
+        public static object StartDate(DateTime sd)
+        {
+            Departure = sd.ToString("dd MMM yyyy");
+            return Departure;
+        }
+        public static object FinishDate(DateTime fd)
+        {
+            Arrival = fd.ToString("dd MMM yyyy");
+            return Arrival;
+        }
+
+        public static object DepartureDate(DateTime dd)
+        {
+            Departure = dd.ToString("dd MMM yyyy");
+            return Departure;
+        }
+        public static object ArrivalDate(DateTime ad)
+        {
+            Arrival = ad.ToString("dd MMM yyyy");
+            return Arrival;
+        }
+
+        public static object DepartureTime(DateTime dd)
+        {
+            Departure = dd.ToShortTimeString();
+            return Departure;
+        }
+        public static object ArrivalTime(DateTime ad)
+        {
+            Arrival = ad.ToShortTimeString();
+            return Arrival;
+        }
+
+        public static object FlightDuration(DateTime at, DateTime dt)
+        {
+            Duration = (at - dt).ToString();
+
+            return Duration;
         }
     }
 }

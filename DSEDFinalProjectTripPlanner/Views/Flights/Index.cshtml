@@ -1,0 +1,126 @@
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model IEnumerable<DSEDFinalProjectTripPlanner.Models.Flight>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Header"] = "Flights";
+}
+
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model)
+{
+    @if (item.TripId == DatabaseManager.TripId)
+    {
+        <div class="col-md-12">
+            <hr />
+            <div class="col-md-1">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a><br />
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a><br />
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </div>
+
+            <div class="col-md-11">
+                <div class="col-md-12">
+                    <div class="flightDetails">
+                        <h5>
+                            @DatabaseManager.DepartureDate(item.DepartureDate)
+                        </h5>
+                        <h4>
+                            @Html.DisplayFor(modelItem => item.DepartureFrom) to
+                            @Html.DisplayFor(modelItem => item.ArrivalTo) |
+                            @Html.DisplayFor(modelItem => item.Airline)
+                            @Html.DisplayFor(modelItem => item.FlightNumber)
+                        </h4>
+                        <p>
+                            Confirmation Number: @Html.DisplayFor(modelItem => item.ConfirmationNumber)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="Departure">
+                        <div class="col-md-12">
+                            <label>Depart:</label>
+                        </div>
+
+                        <div class="col-md-2">
+                            <p>
+                                @DatabaseManager.DepartureTime(item.DepartureTime)
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                @Html.DisplayFor(modelItem => item.DepartureFrom)
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                Terminal: @Html.DisplayFor(modelItem => item.DepartureTerminal)
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                Gate: @Html.DisplayFor(modelItem => item.DepartureGate)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="col-md-12">
+                    <div class="Arrival">
+                        <div class="col-md-12">
+                            <label>Arrive:</label>
+                        </div>
+
+                        <div class="col-md-2">
+                            <p>
+                                @DatabaseManager.DepartureTime(item.ArrivalTime)
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                @Html.DisplayFor(modelItem => item.ArrivalTo)
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                Terminal: @Html.DisplayFor(modelItem => item.ArrivalTerminal)
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                Gate: @Html.DisplayFor(modelItem => item.ArrivalGate)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="Duration">
+                        <div class="col-md-2">
+
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                @*Duration: @DatabaseManager.FlightDuration(item.ArrivalTime, item.DepartureTime)*@
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                Seats: @Html.DisplayFor(modelItem => item.Seats)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
