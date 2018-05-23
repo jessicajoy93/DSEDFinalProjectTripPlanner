@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DSEDFinalProjectTripPlanner.Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DSEDFinalProjectTripPlanner.Data;
+using DSEDFinalProjectTripPlanner.DTO;
 using DSEDFinalProjectTripPlanner.Models;
 
 namespace DSEDFinalProjectTripPlanner.Controllers
@@ -37,6 +39,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             var flight = await _context.Flights
                 .SingleOrDefaultAsync(m => m.Id == id);
+
+            //  FlightDto(id, flight);
+
+
             if (flight == null)
             {
                 return NotFound();
@@ -62,10 +68,14 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 _context.Add(flight);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(flight);
+
         }
+
+
 
         // GET: Flights/Edit/5
         public async Task<IActionResult> Edit(int? id)

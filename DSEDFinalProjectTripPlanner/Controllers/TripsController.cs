@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DSEDFinalProjectTripPlanner.Data;
+using DSEDFinalProjectTripPlanner.DTO;
 using DSEDFinalProjectTripPlanner.Models;
 
 namespace DSEDFinalProjectTripPlanner.Controllers
@@ -38,14 +39,34 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             var trip = await _context.Trips
                 .SingleOrDefaultAsync(m => m.Id == id);
+
+            TripFlightDTO _tfDto = new TripFlightDTO();
+            Trips _trips = new Trips();
+
             DatabaseManager.TripId = (int)id;
+
+            _trips.Id = DatabaseManager.TripId;
+            _trips.Name = trip.Name;
+            _trips.DestinationCity = trip.DestinationCity;
+            _trips.DestinationCountry = trip.DestinationCountry;
+            _trips.StartDate = trip.StartDate;
+            _trips.FinishDate = trip.FinishDate;
+            _trips.Description = trip.Description;
+            //return _trips;
+            var allflights = _context.Flights.ToList();
+            _tfDto.AllFlights = allflights;
+
+            // _tfDto.AllFlights.AddRange(allflights);
+
             if (trip == null)
             {
                 return NotFound();
             }
-
-            return View(trip);
+            _tfDto.AllTrips = _trips;
+            return View(_tfDto);
         }
+
+
 
         // GET: Trips/Create
         public IActionResult Create()
@@ -92,7 +113,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate")] Trip trip)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate,TripId")] Trip trip)
         {
             if (id != trip.Id)
             {

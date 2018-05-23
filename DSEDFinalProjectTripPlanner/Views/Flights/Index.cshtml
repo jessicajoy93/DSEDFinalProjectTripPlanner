@@ -16,6 +16,8 @@
 
 @foreach (var item in Model.OrderBy(item => item.DepartureDate).ThenBy(item => item.DepartureTime))
 {
+    //https://dzone.com/articles/how-order-multiple-columns
+
     @if (item.TripId == DatabaseManager.TripId)
     {
         <div class="col-md-12">

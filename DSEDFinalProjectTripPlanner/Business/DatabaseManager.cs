@@ -16,6 +16,7 @@ namespace DSEDFinalProjectTripPlanner.Business
         public static string Arrival { get; set; }
         public static string Duration { get; set; }
         public static int TripId { get; set; }
+        public static int FlightId { get; set; }
 
 
         public static int NumOfDaysAway(DateTime fd, DateTime sd)
