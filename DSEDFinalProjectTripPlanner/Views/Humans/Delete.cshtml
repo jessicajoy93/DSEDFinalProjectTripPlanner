@@ -1,0 +1,81 @@
+﻿@model DSEDFinalProjectTripPlanner.Models.Human
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Human</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fullname)
+        </dd>
+        <dt>
+            Frequent Flyer #
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FrequentFlyerNumber)
+        </dd>
+        <dt>
+            Ticket #
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TicketNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TripId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TripId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FlightId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LodgingId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LodgingId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherTransportationId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OtherTransportationId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RestaurantId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RestaurantId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CarRentalId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CarRentalId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityTaskId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActivityTaskId)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

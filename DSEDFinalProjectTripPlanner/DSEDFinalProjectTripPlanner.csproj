@@ -12,6 +12,16 @@
     <Compile Remove="Migrations\20180514031257_init.Designer.cs" />
     <Compile Remove="Migrations\20180514043515_shortdates.cs" />
     <Compile Remove="Migrations\20180514043515_shortdates.Designer.cs" />
+    <Compile Remove="Migrations\20180515212753_init.cs" />
+    <Compile Remove="Migrations\20180515212753_init.Designer.cs" />
+    <Compile Remove="Migrations\20180521034151_TripId.cs" />
+    <Compile Remove="Migrations\20180521034151_TripId.Designer.cs" />
+    <Compile Remove="Migrations\20180524020804_human.cs" />
+    <Compile Remove="Migrations\20180524020804_human.Designer.cs" />
+    <Compile Remove="Migrations\20180524021517_init.cs" />
+    <Compile Remove="Migrations\20180524021517_init.Designer.cs" />
+    <Compile Remove="Migrations\20180524060718_fullname.cs" />
+    <Compile Remove="Migrations\20180524060718_fullname.Designer.cs" />
   </ItemGroup>
 
 

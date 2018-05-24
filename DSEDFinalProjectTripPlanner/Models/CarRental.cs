@@ -32,5 +32,6 @@ namespace DSEDFinalProjectTripPlanner.Models
         public DateTime DropoffTime { get; set; }
         [Phone]
         public string ContactPhoneNumber { get; set; }
+        public int TripId { get; set; }
     }
 }

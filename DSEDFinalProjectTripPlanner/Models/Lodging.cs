@@ -31,5 +31,6 @@ namespace DSEDFinalProjectTripPlanner.Models
         public int NumOfGuests { get; set; }
         public int NumOfRooms { get; set; }
         public string RoomDescription { get; set; }
+        public int TripId { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace DSEDFinalProjectTripPlanner.Data
 
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Flight> Flights { get; set; }
-        public DbSet<Traveller> Travellers { get; set; }
+        public DbSet<Human> Travellers { get; set; }
         public DbSet<Lodging> Lodgings { get; set; }
         public DbSet<OtherTransportation> OtherTransportations { get; set; }
         public DbSet<CarRental> CarRentals { get; set; }

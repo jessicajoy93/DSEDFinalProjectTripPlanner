@@ -24,8 +24,6 @@ namespace DSEDFinalProjectTripPlanner.Models
         public DateTime StartDate { get; set; }
         [Required]
         public DateTime FinishDate { get; set; }
-
-        public int TotalDaysAway { get; set; } //to be removed at later date
         public string Description { get; set; }
     }
 }

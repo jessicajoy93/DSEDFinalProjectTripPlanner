@@ -2,34 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DSEDFinalProjectTripPlanner.Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DSEDFinalProjectTripPlanner.Data;
-using DSEDFinalProjectTripPlanner.DTO;
 using DSEDFinalProjectTripPlanner.Models;
 
 namespace DSEDFinalProjectTripPlanner.Controllers
 {
-    public class FlightsController : Controller
+    public class HumansController : Controller
     {
         private readonly TripContext _context;
 
-        public FlightsController(TripContext context)
+        public HumansController(TripContext context)
         {
             _context = context;
         }
 
-        // GET: Flights
+        // GET: Humans
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Flights.ToListAsync());
-
-            //return View(db.News.OrderByDescending(news => new.dateCreated).Take(10).ToList());
+            return View(await _context.Travellers.ToListAsync());
         }
 
-        // GET: Flights/Details/5
+        // GET: Humans/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,46 +33,39 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 return NotFound();
             }
 
-            var flight = await _context.Flights
+            var human = await _context.Travellers
                 .SingleOrDefaultAsync(m => m.Id == id);
-
-            DatabaseManager.FlightId = (int)id;
-
-            if (flight == null)
+            if (human == null)
             {
                 return NotFound();
             }
 
-            return View(flight);
+            return View(human);
         }
 
-        // GET: Flights/Create
+        // GET: Humans/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Flights/Create
+        // POST: Humans/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ConfirmationNumber,Airline,FlightNumber,DepartureDate,DepartureTime,DepartureFrom,DepartureTerminal,DepartureGate,ArrivalDate,ArrivalTime,ArrivalTo,ArrivalTerminal,ArrivalGate,Seats,TripId")] Flight flight)
+        public async Task<IActionResult> Create([Bind("Id,Fullname, FrequentFlyerNumber,TicketNumber,TripId,FlightId,LodgingId,OtherTransportationId,RestaurantId,CarRentalId,ActivityTaskId")] Human human)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(flight);
+                _context.Add(human);
                 await _context.SaveChangesAsync();
-                int tripId = flight.TripId;
-                return RedirectToAction("Details", new { flight.Id });
+                return RedirectToAction(nameof(Index));
             }
-            return View(flight);
-
+            return View(human);
         }
 
-
-
-        // GET: Flights/Edit/5
+        // GET: Humans/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -84,22 +73,22 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 return NotFound();
             }
 
-            var flight = await _context.Flights.SingleOrDefaultAsync(m => m.Id == id);
-            if (flight == null)
+            var human = await _context.Travellers.SingleOrDefaultAsync(m => m.Id == id);
+            if (human == null)
             {
                 return NotFound();
             }
-            return View(flight);
+            return View(human);
         }
 
-        // POST: Flights/Edit/5
+        // POST: Humans/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ConfirmationNumber,Airline,FlightNumber,DepartureDate,DepartureTime,DepartureFrom,DepartureTerminal,DepartureGate,ArrivalDate,ArrivalTime,ArrivalTo,ArrivalTerminal,ArrivalGate,Seats")] Flight flight)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Fullname, FrequentFlyerNumber,TicketNumber,TripId,FlightId,LodgingId,OtherTransportationId,RestaurantId,CarRentalId,ActivityTaskId")] Human human)
         {
-            if (id != flight.Id)
+            if (id != human.Id)
             {
                 return NotFound();
             }
@@ -108,12 +97,12 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 try
                 {
-                    _context.Update(flight);
+                    _context.Update(human);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FlightExists(flight.Id))
+                    if (!HumanExists(human.Id))
                     {
                         return NotFound();
                     }
@@ -122,12 +111,12 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", new { flight.Id });
+                return RedirectToAction(nameof(Index));
             }
-            return View(flight);
+            return View(human);
         }
 
-        // GET: Flights/Delete/5
+        // GET: Humans/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,31 +124,30 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 return NotFound();
             }
 
-            var flight = await _context.Flights
+            var human = await _context.Travellers
                 .SingleOrDefaultAsync(m => m.Id == id);
-
-            if (flight == null)
+            if (human == null)
             {
                 return NotFound();
             }
 
-            return View(flight);
+            return View(human);
         }
 
-        // POST: Flights/Delete/5
+        // POST: Humans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var flight = await _context.Flights.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Flights.Remove(flight);
+            var human = await _context.Travellers.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Travellers.Remove(human);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FlightExists(int id)
+        private bool HumanExists(int id)
         {
-            return _context.Flights.Any(e => e.Id == id);
+            return _context.Travellers.Any(e => e.Id == id);
         }
     }
 }

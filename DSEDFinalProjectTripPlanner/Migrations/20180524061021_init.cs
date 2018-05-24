@@ -29,6 +29,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     StartDate = table.Column<DateTime>(nullable: false),
                     StartTime = table.Column<DateTime>(nullable: false),
                     SupplierName = table.Column<string>(nullable: true),
+                    TripId = table.Column<int>(nullable: false),
                     TypeOfActivity = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -55,7 +56,8 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     PickupDate = table.Column<DateTime>(nullable: false),
                     PickupName = table.Column<string>(nullable: false),
                     PickupTime = table.Column<DateTime>(nullable: false),
-                    SuppplierName = table.Column<string>(nullable: true)
+                    SuppplierName = table.Column<string>(nullable: true),
+                    TripId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -81,7 +83,8 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     DepartureTerminal = table.Column<string>(nullable: true),
                     DepartureTime = table.Column<DateTime>(nullable: false),
                     FlightNumber = table.Column<string>(nullable: false),
-                    Seats = table.Column<string>(nullable: true)
+                    Seats = table.Column<string>(nullable: true),
+                    TripId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -108,7 +111,8 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     LodgingName = table.Column<string>(nullable: true),
                     NumOfGuests = table.Column<int>(nullable: false),
                     NumOfRooms = table.Column<int>(nullable: false),
-                    RoomDescription = table.Column<string>(nullable: true)
+                    RoomDescription = table.Column<string>(nullable: true),
+                    TripId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,6 +142,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     DepartureAddressRegion = table.Column<string>(nullable: false),
                     DepartureDate = table.Column<DateTime>(nullable: false),
                     DepartureTime = table.Column<DateTime>(nullable: false),
+                    TripId = table.Column<int>(nullable: false),
                     TypeOfTransport = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -166,7 +171,8 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     NumberInParty = table.Column<int>(nullable: false),
                     PriceRange = table.Column<string>(nullable: true),
                     RestaurantName = table.Column<string>(nullable: true),
-                    Time = table.Column<DateTime>(nullable: false)
+                    Time = table.Column<DateTime>(nullable: false),
+                    TripId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -179,11 +185,14 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Email = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: false),
-                    FrequentFlyerNumber = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: false),
-                    PhoneNumber = table.Column<string>(nullable: true)
+                    ActivityTaskId = table.Column<int>(nullable: false),
+                    CarRentalId = table.Column<int>(nullable: false),
+                    FlightId = table.Column<int>(nullable: false),
+                    Fullname = table.Column<string>(nullable: true),
+                    LodgingId = table.Column<int>(nullable: false),
+                    OtherTransportationId = table.Column<int>(nullable: false),
+                    RestaurantId = table.Column<int>(nullable: false),
+                    TripId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -201,8 +210,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     DestinationCountry = table.Column<string>(nullable: false),
                     FinishDate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(nullable: false),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    TotalDaysAway = table.Column<int>(nullable: false)
+                    StartDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

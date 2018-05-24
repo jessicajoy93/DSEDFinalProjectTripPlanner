@@ -33,5 +33,6 @@ namespace DSEDFinalProjectTripPlanner.Models
         [Required]
         public string AddressCountry { get; set; }
         public int NumOfPeopleAttending { get; set; }
+        public int TripId { get; set; }
     }
 }

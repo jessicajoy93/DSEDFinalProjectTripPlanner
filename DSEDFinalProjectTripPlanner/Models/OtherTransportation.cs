@@ -37,5 +37,6 @@ namespace DSEDFinalProjectTripPlanner.Models
         public string ArrivalAddressPostcode { get; set; }
         [Required]
         public string ArrivalAddressCountry { get; set; }
+        public int TripId { get; set; }
     }
 }

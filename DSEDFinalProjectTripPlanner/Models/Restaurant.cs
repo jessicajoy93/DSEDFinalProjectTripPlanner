@@ -32,5 +32,6 @@ namespace DSEDFinalProjectTripPlanner.Models
         public string HoursOfOperation { get; set; }
         public string DressCode { get; set; }
         public string PriceRange { get; set; }
+        public int TripId { get; set; }
     }
 }

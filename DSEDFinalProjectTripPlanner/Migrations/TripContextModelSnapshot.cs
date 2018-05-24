@@ -58,6 +58,8 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.Property<string>("SupplierName");
 
+                    b.Property<int>("TripId");
+
                     b.Property<string>("TypeOfActivity")
                         .IsRequired();
 
@@ -103,6 +105,8 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.Property<DateTime>("PickupTime");
 
                     b.Property<string>("SuppplierName");
+
+                    b.Property<int>("TripId");
 
                     b.HasKey("Id");
 
@@ -153,6 +157,36 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.ToTable("Flights");
                 });
 
+            modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Human", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ActivityTaskId");
+
+                    b.Property<int>("CarRentalId");
+
+                    b.Property<int>("FlightId");
+
+                    b.Property<string>("FrequentFlyerNumber");
+
+                    b.Property<string>("Fullname");
+
+                    b.Property<int>("LodgingId");
+
+                    b.Property<int>("OtherTransportationId");
+
+                    b.Property<int>("RestaurantId");
+
+                    b.Property<string>("TicketNumber");
+
+                    b.Property<int>("TripId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Travellers");
+                });
+
             modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Lodging", b =>
                 {
                     b.Property<int>("Id")
@@ -191,6 +225,8 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.Property<int>("NumOfRooms");
 
                     b.Property<string>("RoomDescription");
+
+                    b.Property<int>("TripId");
 
                     b.HasKey("Id");
 
@@ -244,6 +280,8 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.Property<DateTime>("DepartureTime");
 
+                    b.Property<int>("TripId");
+
                     b.Property<string>("TypeOfTransport");
 
                     b.HasKey("Id");
@@ -292,31 +330,11 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.Property<DateTime>("Time");
 
+                    b.Property<int>("TripId");
+
                     b.HasKey("Id");
 
                     b.ToTable("Restaurants");
-                });
-
-            modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Traveller", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired();
-
-                    b.Property<string>("FrequentFlyerNumber");
-
-                    b.Property<string>("LastName")
-                        .IsRequired();
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Travellers");
                 });
 
             modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Trip", b =>
@@ -338,8 +356,6 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                         .IsRequired();
 
                     b.Property<DateTime>("StartDate");
-
-                    b.Property<int>("TotalDaysAway");
 
                     b.HasKey("Id");
 

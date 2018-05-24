@@ -1,0 +1,90 @@
+﻿@model IEnumerable<DSEDFinalProjectTripPlanner.Models.Human>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FrequentFlyerNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TripId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LodgingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OtherTransportationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestaurantId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarRentalId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActivityTaskId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FrequentFlyerNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlightId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LodgingId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OtherTransportationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestaurantId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarRentalId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivityTaskId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
