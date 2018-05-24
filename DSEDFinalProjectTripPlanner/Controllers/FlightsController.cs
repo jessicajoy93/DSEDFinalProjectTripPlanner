@@ -68,8 +68,8 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 _context.Add(flight);
                 await _context.SaveChangesAsync();
-
-                return RedirectToAction(nameof(Index));
+                int flightid = flight.TripId;
+                return RedirectToAction("Details", "Trips", new { flightid });
             }
             return View(flight);
 

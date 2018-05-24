@@ -56,8 +56,6 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             var allflights = _context.Flights.ToList();
             _tfDto.AllFlights = allflights;
 
-            // _tfDto.AllFlights.AddRange(allflights);
-
             if (trip == null)
             {
                 return NotFound();

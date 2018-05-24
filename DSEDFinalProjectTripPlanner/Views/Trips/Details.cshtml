@@ -36,17 +36,38 @@
     }
     <div>
         <a asp-action="Edit" asp-route-id="@Model.AllTrips.Id">Edit</a> |
-        <a asp-area="" asp-controller="Flights" asp-action="Create">New Flight</a> |
+        <a id="myBtn">Add Plans</a> |
         <a asp-action="Index">Back to List</a>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h3>Add Plans</h3>
+                </div>
+                <div class="modal-body col-md-6">
+                    <h4>Transportation</h4>
+                    <a asp-area="" asp-controller="Flights" asp-action="Create">Flight</a><br />
+                    <a>Car Rental</a><br />
+                    <a>Other Transportation</a>
+                </div>
+                <div class="modal-body col-md-6">
+                    <h4>Activites</h4>
+                    <a>Lodging</a><br />
+                    <a>Car Rental</a><br />
+                    <a>Restaurant</a><br />
+                    <a>Activity</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+
     </div>
-
-
-
-
-</div>
-<div class="flights">
-    @if (Model.AllFlights.Any())
-    {
+    <div class="flights">
+        @*To Display the flights*@
         @foreach (var flight in Model.AllFlights)
         {
             @if (flight.TripId == DatabaseManager.TripId)
@@ -54,12 +75,9 @@
                 <div class="col-md-12">
                     <hr />
                     <div class="col-md-1">
-                        <a asp-action="Edit" asp-route-id="@flight.Id">Edit</a><br />
-                        <a asp-action="Details" asp-route-id="@flight.Id">Details</a><br />
-                        <a asp-action="Delete" asp-route-id="@flight.Id">Delete</a>
-
-                        <br />
-                        @Html.DisplayFor(modelItem => flight.TripId)
+                        <a asp-controller="Flights" asp-action="Edit" asp-route-id="@flight.Id">Edit</a><br />
+                        <a asp-controller="Flights" asp-action="Details" asp-route-id="@flight.Id">Details</a><br />
+                        <a asp-controller="Flights" asp-action="Delete" asp-route-id="@flight.Id">Delete</a>
                     </div>
 
                     <div class="col-md-11">
@@ -81,9 +99,9 @@
                         </div>
 
                         <div class="col-md-12">
-                            <div class="Departure">
-                                <div class="col-md-12">
-                                    <label>Depart:</label>
+                            <div>
+                                <div class="col-md-12 bold">
+                                    <p>Depart:</p>
                                 </div>
 
                                 <div class="col-md-2">
@@ -110,9 +128,9 @@
                         </div>
                         <div class="clear"></div>
                         <div class="col-md-12">
-                            <div class="Arrival">
-                                <div class="col-md-12">
-                                    <label>Arrive:</label>
+                            <div>
+                                <div class="col-md-12 bold">
+                                    <p>Arrive:</p>
                                 </div>
 
                                 <div class="col-md-2">
@@ -158,12 +176,8 @@
                 </div>
             }
         }
-    }
-    else
-    {
-        <p>Please add a <a asp-area="" asp-controller="Flights" asp-action="Create">new flight</a>.</p>
-    }
-</div>
+
+    </div>
 
 
 
