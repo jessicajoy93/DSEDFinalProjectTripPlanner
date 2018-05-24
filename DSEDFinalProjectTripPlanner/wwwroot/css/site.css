@@ -180,3 +180,16 @@ a {
 .bold {
     font-weight: bold;
 }
+
+.passengers h4 {
+    color: #fff;
+    text-align: left;
+}
+
+.col-md-12, .col-md-11, .col-md-4, .col-md-3, .col-md-2, .col-md-1 {
+    padding-left: 0px;
+}
+
+.flightOptions {
+    text-align: left;
+}

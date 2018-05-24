@@ -14,9 +14,9 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 {
     public class FlightsController : Controller
     {
-        private readonly TripContext _context;
+        private readonly Data.TripContext _context;
 
-        public FlightsController(TripContext context)
+        public FlightsController(Data.TripContext context)
         {
             _context = context;
         }

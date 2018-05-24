@@ -11,8 +11,8 @@ using System;
 namespace DSEDFinalProjectTripPlanner.Migrations
 {
     [DbContext(typeof(TripContext))]
-    [Migration("20180524061720_human")]
-    partial class human
+    [Migration("20180524093744_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -185,7 +185,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Travellers");
+                    b.ToTable("Human");
                 });
 
             modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Lodging", b =>

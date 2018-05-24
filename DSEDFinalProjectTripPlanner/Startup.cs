@@ -28,7 +28,7 @@ namespace DSEDFinalProjectTripPlanner
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<TripContext>(options =>
+            services.AddDbContext<Data.TripContext>(options =>
                 options.UseSqlite("Data Source=trip.db"));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()

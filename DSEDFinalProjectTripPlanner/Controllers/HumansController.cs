@@ -12,9 +12,9 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 {
     public class HumansController : Controller
     {
-        private readonly TripContext _context;
+        private readonly Data.TripContext _context;
 
-        public HumansController(TripContext context)
+        public HumansController(Data.TripContext context)
         {
             _context = context;
         }

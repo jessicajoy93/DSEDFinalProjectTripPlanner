@@ -56,6 +56,9 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             var allflights = _context.Flights.ToList();
             _tfDto.AllFlights = allflights;
 
+            var allhumans = _context.Humans.ToList();
+            _tfDto.AllHumans = allhumans;
+
             if (trip == null)
             {
                 return NotFound();

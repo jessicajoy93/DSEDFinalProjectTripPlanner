@@ -184,7 +184,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Travellers");
+                    b.ToTable("Human");
                 });
 
             modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Lodging", b =>

@@ -22,7 +22,7 @@ namespace DSEDFinalProjectTripPlanner.Data
         public DbSet<CarRental> CarRentals { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<ActivityTask> ActivityTasks { get; set; }
-        //public DbSet<TripFlightDTO> TripFlightDtos { get; set; }
+        public DbSet<Human> Humans { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

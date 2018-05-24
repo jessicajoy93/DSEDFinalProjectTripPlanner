@@ -92,6 +92,28 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Human",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ActivityTaskId = table.Column<int>(nullable: false),
+                    CarRentalId = table.Column<int>(nullable: false),
+                    FlightId = table.Column<int>(nullable: false),
+                    FrequentFlyerNumber = table.Column<string>(nullable: true),
+                    Fullname = table.Column<string>(nullable: true),
+                    LodgingId = table.Column<int>(nullable: false),
+                    OtherTransportationId = table.Column<int>(nullable: false),
+                    RestaurantId = table.Column<int>(nullable: false),
+                    TicketNumber = table.Column<string>(nullable: true),
+                    TripId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Human", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Lodgings",
                 columns: table => new
                 {
@@ -180,26 +202,6 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Travellers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ActivityTaskId = table.Column<int>(nullable: false),
-                    CarRentalId = table.Column<int>(nullable: false),
-                    FlightId = table.Column<int>(nullable: false),
-                    Fullname = table.Column<string>(nullable: true),
-                    LodgingId = table.Column<int>(nullable: false),
-                    OtherTransportationId = table.Column<int>(nullable: false),
-                    RestaurantId = table.Column<int>(nullable: false),
-                    TripId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Travellers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Trips",
                 columns: table => new
                 {
@@ -230,6 +232,9 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                 name: "Flights");
 
             migrationBuilder.DropTable(
+                name: "Human");
+
+            migrationBuilder.DropTable(
                 name: "Lodgings");
 
             migrationBuilder.DropTable(
@@ -237,9 +242,6 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
             migrationBuilder.DropTable(
                 name: "Restaurants");
-
-            migrationBuilder.DropTable(
-                name: "Travellers");
 
             migrationBuilder.DropTable(
                 name: "Trips");
