@@ -35,7 +35,7 @@
                 </p>
                 <p>
                     @* @Html.DisplayFor(modelItem => item.TotalDaysAway)*@
-                    @DatabaseManager.NumOfDaysAway(item.FinishDate, item.StartDate) days, @DatabaseManager.NumOfDaysToGo(item.StartDate, DateTime.Now) days to go.
+                    @DatabaseManager.NumOfDays(item.FinishDate, item.StartDate) days, @DatabaseManager.NumOfDaysToGo(item.StartDate, DateTime.Now) days to go.
                 </p>
                 <p>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

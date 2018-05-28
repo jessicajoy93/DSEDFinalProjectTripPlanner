@@ -40,14 +40,38 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             var flight = await _context.Flights
                 .SingleOrDefaultAsync(m => m.Id == id);
 
+            TripDTO _tfDto = new TripDTO();
+            MyFlights _flights = new MyFlights();
+
             DatabaseManager.FlightId = (int)id;
+
+            _flights.Id = DatabaseManager.FlightId;
+            _flights.ConfirmationNumber = flight.ConfirmationNumber;
+            _flights.Airline = flight.Airline;
+            _flights.FlightNumber = flight.FlightNumber;
+            _flights.DepartureDate = flight.DepartureDate;
+            _flights.DepartureTime = flight.DepartureTime;
+            _flights.DepartureFrom = flight.DepartureFrom;
+            _flights.DepartureTerminal = flight.DepartureTerminal;
+            _flights.DepartureGate = flight.DepartureGate;
+            _flights.ArrivalDate = flight.ArrivalDate;
+            _flights.ArrivalTime = flight.ArrivalTime;
+            _flights.ArrivalTo = flight.ArrivalTo;
+            _flights.ArrivalTerminal = flight.ArrivalTerminal;
+            _flights.ArrivalGate = flight.ArrivalGate;
+            _flights.Seats = flight.Seats;
+            _flights.TripId = flight.TripId;
+
+            var allhumans = _context.Humans.ToList();
+            _tfDto.AllHumans = allhumans;
 
             if (flight == null)
             {
                 return NotFound();
             }
 
-            return View(flight);
+            _tfDto.MyFlight = _flights;
+            return View(_tfDto);
         }
 
         // GET: Flights/Create
@@ -68,7 +92,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 _context.Add(flight);
                 await _context.SaveChangesAsync();
                 int tripId = flight.TripId;
-                return RedirectToAction("Details", new { flight.Id });
+                return RedirectToAction("Details", "Trips", new { Id = flight.TripId });
             }
             return View(flight);
 
@@ -97,7 +121,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ConfirmationNumber,Airline,FlightNumber,DepartureDate,DepartureTime,DepartureFrom,DepartureTerminal,DepartureGate,ArrivalDate,ArrivalTime,ArrivalTo,ArrivalTerminal,ArrivalGate,Seats")] Flight flight)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ConfirmationNumber,Airline,FlightNumber,DepartureDate,DepartureTime,DepartureFrom,DepartureTerminal,DepartureGate,ArrivalDate,ArrivalTime,ArrivalTo,ArrivalTerminal,ArrivalGate,Seats,TripId")] Flight flight)
         {
             if (id != flight.Id)
             {
@@ -122,7 +146,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", new { flight.Id });
+                return RedirectToAction("Details", "Trips", new { Id = flight.TripId });
             }
             return View(flight);
         }

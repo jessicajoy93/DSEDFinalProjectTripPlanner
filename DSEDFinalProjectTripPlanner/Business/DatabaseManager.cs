@@ -17,9 +17,19 @@ namespace DSEDFinalProjectTripPlanner.Business
         public static string Duration { get; set; }
         public static int TripId { get; set; }
         public static int FlightId { get; set; }
+        public static int NumOfHumans { get; set; } = 0;
+
+        public static int addHuman()
+        {
+            return NumOfHumans++;
+        }
+        public static int removeHuman()
+        {
+            return NumOfHumans--;
+        }
 
 
-        public static int NumOfDaysAway(DateTime fd, DateTime sd)
+        public static int NumOfDays(DateTime fd, DateTime sd)
         {
             TotalNumDays = (int)(fd - sd).TotalDays;
             return TotalNumDays;

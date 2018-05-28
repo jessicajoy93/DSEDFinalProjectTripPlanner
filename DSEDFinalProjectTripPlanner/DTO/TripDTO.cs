@@ -8,7 +8,7 @@ using DSEDFinalProjectTripPlanner.Models;
 
 namespace DSEDFinalProjectTripPlanner.DTO
 {
-    public class TripFlightDTO
+    public class TripDTO
     {
         private readonly Trips _trips = new Trips();
         public int Id { get; set; }
@@ -16,6 +16,7 @@ namespace DSEDFinalProjectTripPlanner.DTO
         //public List<Trips> AllTrips { get; set; }
         public Trips AllTrips { get; set; }
         public List<Flight> AllFlights { get; set; }
+        public MyFlights MyFlight { get; set; }
         public List<Human> AllHumans { get; set; }
 
 

@@ -40,7 +40,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             var trip = await _context.Trips
                 .SingleOrDefaultAsync(m => m.Id == id);
 
-            TripFlightDTO _tfDto = new TripFlightDTO();
+            TripDTO _tfDto = new TripDTO();
             Trips _trips = new Trips();
 
             DatabaseManager.TripId = (int)id;
@@ -80,7 +80,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate,Description,TotalDaysAway")] Trip trip)
+        public async Task<IActionResult> Create([Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate,Description")] Trip trip)
         {
 
             if (ModelState.IsValid)
@@ -114,7 +114,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate,TripId")] Trip trip)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate,Description,TripId")] Trip trip)
         {
             if (id != trip.Id)
             {

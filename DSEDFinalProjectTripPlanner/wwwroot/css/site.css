@@ -70,6 +70,10 @@ a {
     text-align: center;
 }
 
+    .header p {
+        text-align: center;
+    }
+
 
 .clear {
     clear: both;

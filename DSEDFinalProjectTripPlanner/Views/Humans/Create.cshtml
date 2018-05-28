@@ -3,17 +3,20 @@
 
 @{
     ViewData["Title"] = "Create";
+    ViewData["Header"] = "Add Human";
+
 }
 
-<h2>Create</h2>
-
-<h4>Human</h4>
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-md-4">
+
                 <div class="form-group">
                     <label asp-for="Fullname" class="control-label"></label>
                     <input asp-for="Fullname" class="form-control" />
@@ -62,7 +65,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-area="" asp-controller="Trips" asp-action="Details/@DatabaseManager.TripId">Back to List</a>
 </div>
 
 @section Scripts {

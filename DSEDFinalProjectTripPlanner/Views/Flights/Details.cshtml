@@ -1,5 +1,5 @@
 ﻿@using DSEDFinalProjectTripPlanner.Business
-@model DSEDFinalProjectTripPlanner.Models.Flight
+@model DSEDFinalProjectTripPlanner.DTO.TripDTO
 
 @{
     ViewData["Title"] = "Details";
@@ -16,16 +16,16 @@
         <div class="col-md-12">
             <div class="flightDetails">
                 <h5>
-                    @DatabaseManager.DepartureDate(Model.DepartureDate)
+                    @DatabaseManager.DepartureDate(Model.MyFlight.DepartureDate)
                 </h5>
                 <h4>
-                    @Html.DisplayFor(model => model.DepartureFrom) to
-                    @Html.DisplayFor(model => model.ArrivalTo) |
-                    @Html.DisplayFor(model => model.Airline)
-                    @Html.DisplayFor(model => model.FlightNumber)
+                    @Html.DisplayFor(model => model.MyFlight.DepartureFrom) to
+                    @Html.DisplayFor(model => model.MyFlight.ArrivalTo) |
+                    @Html.DisplayFor(model => model.MyFlight.Airline)
+                    @Html.DisplayFor(model => model.MyFlight.FlightNumber)
                 </h4>
                 <p>
-                    Confirmation Number: @Html.DisplayFor(model => model.ConfirmationNumber)
+                    Confirmation Number: @Html.DisplayFor(model => model.MyFlight.ConfirmationNumber)
                 </p>
             </div>
         </div>
@@ -38,22 +38,22 @@
 
                 <div class="col-md-2">
                     <p>
-                        @DatabaseManager.DepartureTime(Model.DepartureTime)
+                        @DatabaseManager.DepartureTime(Model.MyFlight.DepartureTime)
                     </p>
                 </div>
                 <div class="col-md-4">
                     <p>
-                        @Html.DisplayFor(model => model.DepartureFrom)
+                        @Html.DisplayFor(model => model.MyFlight.DepartureFrom)
                     </p>
                 </div>
                 <div class="col-md-3">
                     <p>
-                        Terminal: @Html.DisplayFor(model => model.DepartureTerminal)
+                        Terminal: @Html.DisplayFor(model => model.MyFlight.DepartureTerminal)
                     </p>
                 </div>
                 <div class="col-md-3">
                     <p>
-                        Gate: @Html.DisplayFor(model => model.DepartureGate)
+                        Gate: @Html.DisplayFor(model => model.MyFlight.DepartureGate)
                     </p>
                 </div>
             </div>
@@ -67,22 +67,22 @@
 
                 <div class="col-md-2">
                     <p>
-                        @DatabaseManager.DepartureTime(Model.ArrivalTime)
+                        @DatabaseManager.DepartureTime(Model.MyFlight.ArrivalTime)
                     </p>
                 </div>
                 <div class="col-md-4">
                     <p>
-                        @Html.DisplayFor(model => model.ArrivalTo)
+                        @Html.DisplayFor(model => model.MyFlight.ArrivalTo)
                     </p>
                 </div>
                 <div class="col-md-3">
                     <p>
-                        Terminal: @Html.DisplayFor(model => model.ArrivalTerminal)
+                        Terminal: @Html.DisplayFor(model => model.MyFlight.ArrivalTerminal)
                     </p>
                 </div>
                 <div class="col-md-3">
                     <p>
-                        Gate: @Html.DisplayFor(model => model.ArrivalGate)
+                        Gate: @Html.DisplayFor(model => model.MyFlight.ArrivalGate)
                     </p>
                 </div>
             </div>
@@ -99,17 +99,49 @@
                 </div>
                 <div class="col-md-3">
                     <p>
-                        Seats: @Html.DisplayFor(model => model.Seats)
+                        Seats: @Html.DisplayFor(model => model.MyFlight.Seats)
                     </p>
                 </div>
             </div>
+        </div>
+
+        <div class="passengers">
+            <h4>Who's Going?</h4>
+            @foreach (var human in Model.AllHumans)
+            {
+                @if (human.TripId == DatabaseManager.TripId && human.FlightId == DatabaseManager.FlightId)
+                {
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <p>@Html.DisplayFor(modelItem => human.Fullname)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>Frequent Flyer #: @Html.DisplayFor(modelItem => human.FrequentFlyerNumber)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                Seat #: @Html.DisplayFor(modelItem => human.TicketNumber)
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                <a asp-controller="Humans" asp-action="Edit" asp-route-id="@human.Id">Edit</a> |
+                                <a asp-controller="Humans" asp-action="Delete" asp-route-id="@human.Id">Delete</a>
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            }
         </div>
     </div>
 </div>
 
 <div>
 
+    <div>
 
+    </div>
 
 </div>
 <div>
@@ -121,3 +153,5 @@
         </a>
     </p>
 </div>
+
+

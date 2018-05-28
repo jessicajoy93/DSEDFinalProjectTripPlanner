@@ -19,6 +19,11 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             _context = context;
         }
 
+        public IActionResult NumberOfHumans()
+        {
+            return View();
+        }
+
         // GET: Humans
         public async Task<IActionResult> Index()
         {
@@ -60,7 +65,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 _context.Add(human);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Flights", new { Id = human.FlightId });
             }
             return View(human);
         }
@@ -111,7 +116,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Flights", new { Id = human.FlightId });
             }
             return View(human);
         }
