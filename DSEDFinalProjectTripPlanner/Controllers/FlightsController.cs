@@ -42,6 +42,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             TripDTO _tfDto = new TripDTO();
             MyFlights _flights = new MyFlights();
+            AllDateTimes _allDateTimes = new AllDateTimes();
 
             DatabaseManager.FlightId = (int)id;
 
@@ -64,6 +65,16 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             var allhumans = _context.Humans.ToList();
             _tfDto.AllHumans = allhumans;
+
+            _allDateTimes.FlightId = DatabaseManager.FlightId;
+            _allDateTimes.TripId = DatabaseManager.TripId;
+            _allDateTimes.StartDate = flight.DepartureDate;
+            _allDateTimes.StartTime = flight.DepartureTime;
+            _allDateTimes.FinishDate = flight.ArrivalDate;
+            _allDateTimes.FinishTime = flight.ArrivalTime;
+
+            List<AllDateTimes> alldatetimes = _tfDto.GetAllDateTimes;
+            _tfDto.GetAllDateTimes = alldatetimes;
 
             if (flight == null)
             {

@@ -18,6 +18,9 @@ namespace DSEDFinalProjectTripPlanner.DTO
         public List<Flight> AllFlights { get; set; }
         public MyFlights MyFlight { get; set; }
         public List<Human> AllHumans { get; set; }
+        public List<AllDateTimes> GetAllDateTimes { get; set; }
+
+        public List<DateTime> GetDates { get; set; }
 
 
 

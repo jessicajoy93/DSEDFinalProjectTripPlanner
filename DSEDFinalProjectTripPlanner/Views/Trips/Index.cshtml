@@ -14,7 +14,7 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-@foreach (var item in Model)
+@foreach (var item in Model.OrderBy(item => item.StartDate))
 {
     <div class="col-md-12">
         <div class="destination">
@@ -29,9 +29,9 @@
             <div class="col-md-5">
                 <p>@Html.DisplayFor(modelItem => item.DestinationCity), @Html.DisplayFor(modelItem => item.DestinationCountry)</p>
                 <p>
-                    @Html.DisplayFor(modelItem => item.StartDate.Day)/@Html.DisplayFor(modelItem => item.StartDate.Month)/@Html.DisplayFor(modelItem => item.StartDate.Year)
+                    @DatabaseManager.StartDate(item.StartDate)
                     -
-                    @Html.DisplayFor(modelItem => item.FinishDate.Day)/@Html.DisplayFor(modelItem => item.FinishDate.Month)/@Html.DisplayFor(modelItem => item.FinishDate.Year)
+                    @DatabaseManager.StartDate(item.FinishDate)
                 </p>
                 <p>
                     @* @Html.DisplayFor(modelItem => item.TotalDaysAway)*@
@@ -44,34 +44,5 @@
             </div>
         </div>
     </div>
-
-    @*<tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DestinationCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DestinationCountry)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FinishDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>*@
 }
-@*</tbody>
-    </table>*@
 
-@*@{
-        Trip _myTrip = new Trip();
-        _myTrip.StartDate.ToShortDateString();
-    }*@

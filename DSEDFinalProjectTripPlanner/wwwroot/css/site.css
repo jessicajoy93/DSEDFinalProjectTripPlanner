@@ -2,6 +2,13 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #1C383D;
+    background: url("../images/bg.jpg") no-repeat left top fixed;
+}
+
+
+
+.row {
+    padding: 15px;
 }
 
 /* Wrapping element */
@@ -9,36 +16,44 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color: #DFE2C0;
+    opacity: 0.9;
+    max-width: 1500px;
+}
+
+.col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-6, .col-md-4, .col-md-3, .col-md-2, .col-md-1 {
+    padding: 0px;
+    padding-right: 2px;
 }
 
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
-    color: #E5A81F;
+    color: #E2B44E;
 }
 
 
 p, label, table, dt, dd {
-    color: #fff;
+    color: #000000;
     text-align: left;
 }
 
 a {
-    color: #35885C;
+    color: #577C68;
 }
 
     a:hover {
-        color: #E5A81F;
+        color: #B5945C;
         text-decoration: none;
     }
 
 .btn {
     color: #fff;
-    background-color: #35885C;
+    background-color: #577C68;
 }
 
     .btn:hover {
         color: #fff;
-        background-color: #E5A81F;
+        background-color: #B5945C;
     }
 
 /* Carousel */
@@ -80,11 +95,11 @@ a {
 }
 
 .required {
-    color: #E5A81F;
+    color: red;
 }
 
 .text-danger {
-    color: #E5A81F;
+    color: red;
 }
 
 .destination {
@@ -178,7 +193,7 @@ a {
 /* Flights */
 .flightDetails h4, h5 {
     text-align: left;
-    color: #fff;
+    color: #000000;
 }
 
 .bold {
@@ -186,14 +201,38 @@ a {
 }
 
 .passengers h4 {
-    color: #fff;
+    color: #000000;
     text-align: left;
 }
 
-.col-md-12, .col-md-11, .col-md-4, .col-md-3, .col-md-2, .col-md-1 {
-    padding-left: 0px;
-}
+
+
+
 
 .flightOptions {
     text-align: left;
 }
+
+.lodgingName p {
+    text-align: center;
+}
+
+.lodgingName h3 {
+    margin: 0px;
+}
+
+.date {
+    background-color: #DB8CC6;
+    padding: 5px;
+    overflow: hidden;
+}
+
+    .date h3 {
+        text-align: left;
+        color: #DFE2C0;
+    }
+
+    .date p {
+        text-align: right;
+        vertical-align: middle;
+    }

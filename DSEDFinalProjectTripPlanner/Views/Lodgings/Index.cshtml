@@ -1,0 +1,67 @@
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model IEnumerable<DSEDFinalProjectTripPlanner.Models.Lodging>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var lodging in Model.OrderBy(lodging => lodging.ArrivalDate).ThenBy(lodging => lodging.ArrivalTime))
+{
+    @if (lodging.TripId == DatabaseManager.TripId)
+    {
+        <div class="col-md-12">
+            <hr />
+            <div class="col-md-3">
+                <div class="lodgingName">
+                    <h3>
+                        <a asp-action="Details" asp-route-id="@lodging.Id">
+                            @Html.DisplayFor(modelItem => lodging.LodgingName)
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    @Html.DisplayFor(modelItem => lodging.AddressLine1),
+                    @Html.DisplayFor(modelItem => lodging.AddressCity),
+                    @Html.DisplayFor(modelItem => lodging.AddressPostcode),<br />
+                    @Html.DisplayFor(modelItem => lodging.AddressRegion),
+                    @Html.DisplayFor(modelItem => lodging.AddressCountry)
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                    <span class="bold">Check-in:</span>
+                    @DatabaseManager.StartDate(lodging.ArrivalDate) &#64; @* &#64; - symbol for @ *@
+                    @DatabaseManager.ArrivalTime(lodging.ArrivalTime)<br />
+                    <span class="bold">Check-out:</span>
+                    @DatabaseManager.FinishDate(lodging.DepartureDate) &#64; @* &#64; - symbol for @ *@
+                    @DatabaseManager.DepartureTime(lodging.DepartureTime)
+                </p>
+            </div>
+            <div class="col-md-2">
+                <p>
+                    <span class="bold">Guests:</span>
+                    @Html.DisplayFor(modelItem => lodging.NumOfGuests)<br />
+                    <span class="bold">Rooms:</span>
+                    @Html.DisplayFor(modelItem => lodging.NumOfRooms)
+                </p>
+            </div>
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+                <p>
+                    <a asp-action="Edit" asp-route-id="@lodging.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@lodging.Id">Delete</a>
+                </p>
+            </div>
+
+        </div>
+    }
+}
+

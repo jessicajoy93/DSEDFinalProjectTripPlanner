@@ -71,7 +71,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="DepartureDate" class="control-label">Departure Date <span class="required">*</span></label>
-                    <input asp-for="DepartureDate" type="date" class="form-control" />
+                    <input asp-for="DepartureDate" type="date" value="@DatabaseManager.TripStartDate" class="form-control" />
                     <span asp-validation-for="DepartureDate" class="text-danger"></span>
                 </div>
             </div>

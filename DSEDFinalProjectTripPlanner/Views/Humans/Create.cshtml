@@ -5,68 +5,132 @@
     ViewData["Title"] = "Create";
     ViewData["Header"] = "Add Human";
 
+    if (DatabaseManager.TripId != 0)
+    {
+        if (DatabaseManager.FlightId != 0)
+        {
+            ViewData["Header"] = "Add Passenger";
+            ViewData["FrequentFlyerNumber"] = "Frequent Flyer #";
+            ViewData["TicketNumber"] = "Seat #";
+        }
+    }
+    else
+    {
+        ViewData["Header"] = "Add Human";
+    }
+
 }
 
 <div class="header">
     <h1>@ViewData["Header"]</h1>
 </div>
 <hr />
-<div class="row">
-    <div class="col-md-12">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="col-md-4">
+@if (DatabaseManager.TripId != 0)
+{
+    @if (DatabaseManager.FlightId != 0)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="col-md-4">
 
-                <div class="form-group">
-                    <label asp-for="Fullname" class="control-label"></label>
-                    <input asp-for="Fullname" class="form-control" />
-                    <span asp-validation-for="Fullname" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="FrequentFlyerNumber" class="control-label">Frequent Flyer #</label>
-                    <input asp-for="FrequentFlyerNumber" class="form-control" />
-                    <span asp-validation-for="FrequentFlyerNumber" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="TicketNumber" class="control-label">Seat #</label>
-                    <input asp-for="TicketNumber" class="form-control" />
-                    <span asp-validation-for="TicketNumber" class="text-danger"></span>
-                </div>
-            </div>
-
-
-            @*Ids to be hidden*@
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label asp-for="TripId" class="control-label"></label>
-                    <input asp-for="TripId" class="form-control" readonly="readonly" value="@DatabaseManager.TripId" />
-                    <span asp-validation-for="TripId" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label asp-for="FlightId" class="control-label"></label>
-                    <input asp-for="FlightId" class="form-control" readonly="readonly" value="@DatabaseManager.FlightId" />
-                    <span asp-validation-for="FlightId" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="clear"></div>
+                        <div class="form-group">
+                            <label asp-for="Fullname" class="control-label"></label>
+                            <input asp-for="Fullname" class="form-control" />
+                            <span asp-validation-for="Fullname" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="FrequentFlyerNumber" class="control-label">@ViewData["FrequentFlyerNumber"]</label>
+                            <input asp-for="FrequentFlyerNumber" class="form-control" />
+                            <span asp-validation-for="FrequentFlyerNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="TicketNumber" class="control-label">@ViewData["TicketNumber"]</label>
+                            <input asp-for="TicketNumber" class="form-control" />
+                            <span asp-validation-for="TicketNumber" class="text-danger"></span>
+                        </div>
+                    </div>
 
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                    @*Ids to be hidden*@
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label asp-for="TripId" class="control-label"></label>
+                            <input asp-for="TripId" class="form-control" readonly="readonly" value="@DatabaseManager.TripId" />
+                            <span asp-validation-for="TripId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label asp-for="FlightId" class="control-label"></label>
+                            <input asp-for="FlightId" class="form-control" readonly="readonly" value="@DatabaseManager.FlightId" />
+                            <span asp-validation-for="FlightId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label asp-for="LodgingId" class="control-label"></label>
+                            <input asp-for="LodgingId" class="form-control" readonly="readonly" value="@DatabaseManager.LodgingId" />
+                            <span asp-validation-for="LodgingId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label asp-for="OtherTransportationId" class="control-label"></label>
+                            <input asp-for="OtherTransportationId" class="form-control" readonly="readonly" value="@DatabaseManager.OtherTransportationId" />
+                            <span asp-validation-for="OtherTransportationId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label asp-for="RestaurantId" class="control-label"></label>
+                            <input asp-for="RestaurantId" class="form-control" readonly="readonly" value="@DatabaseManager.RestaurantId" />
+                            <span asp-validation-for="RestaurantId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label asp-for="CarRentalId" class="control-label"></label>
+                            <input asp-for="CarRentalId" class="form-control" readonly="readonly" value="@DatabaseManager.CarRentalId" />
+                            <span asp-validation-for="CarRentalId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label asp-for="ActivityTaskId" class="control-label"></label>
+                            <input asp-for="ActivityTaskId" class="form-control" readonly="readonly" value="@DatabaseManager.ActivityTaskId" />
+                            <span asp-validation-for="ActivityTaskId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+
+    }
+    <p>You can't add a human without selecting a plan</p>
+    <div>
+        <a asp-area="" asp-controller="Trips" asp-action="Details/@DatabaseManager.TripId">Back to List</a>
     </div>
-</div>
+}
+else
+{
+    <p>Please select a trip before adding a human</p>
+    <div>
+        <a asp-area="" asp-controller="Trips" asp-action="Index">Back to List</a>
+    </div>
+}
 
-<div>
-    <a asp-area="" asp-controller="Trips" asp-action="Details/@DatabaseManager.TripId">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

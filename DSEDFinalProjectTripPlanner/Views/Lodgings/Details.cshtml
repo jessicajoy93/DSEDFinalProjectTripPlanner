@@ -1,0 +1,68 @@
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model DSEDFinalProjectTripPlanner.Models.Lodging
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lodging</h4>
+    <hr />
+    <div class="col-md-12">
+        <hr />
+        <div class="col-md-3">
+            <div class="lodgingName">
+                <h3>
+                    @Html.DisplayFor(model => model.LodgingName)
+                </h3>
+                <p>
+                    <span class="bold">Confirmation #:</span>
+                    @Html.DisplayFor(model => model.ConfirmationNumber)
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p>
+                @Html.DisplayFor(model => model.AddressLine1),
+                @Html.DisplayFor(model => model.AddressCity),
+                @Html.DisplayFor(model => model.AddressPostcode),<br />
+                @Html.DisplayFor(model => model.AddressRegion),
+                @Html.DisplayFor(model => model.AddressCountry)
+            </p>
+        </div>
+        <div class="col-md-3">
+            <p>
+                <span class="bold">Check-in:</span>
+                @DatabaseManager.StartDate(Model.ArrivalDate) &#64; @* &#64; - symbol for @ *@
+                @DatabaseManager.ArrivalTime(Model.ArrivalTime)<br />
+                <span class="bold">Check-out:</span>
+                @DatabaseManager.FinishDate(Model.DepartureDate) &#64; @* &#64; - symbol for @ *@
+                @DatabaseManager.DepartureTime(Model.DepartureTime)
+            </p>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span class="bold">Guests:</span>
+                @Html.DisplayFor(model => model.NumOfGuests)<br />
+                <span class="bold">Rooms:</span>
+                @Html.DisplayFor(model => model.NumOfRooms)
+            </p>
+        </div>
+        <div class="col-md-12">
+            <p>
+                <span class="bold">Description:</span><br />
+                @Html.DisplayFor(model => model.RoomDescription)
+            </p>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <p>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+            <a asp-action="Index">Back to List</a>
+        </p>
+    </div>
+</div>
+

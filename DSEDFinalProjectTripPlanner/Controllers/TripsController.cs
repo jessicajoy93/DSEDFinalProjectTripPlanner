@@ -44,6 +44,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             Trips _trips = new Trips();
 
             DatabaseManager.TripId = (int)id;
+            DatabaseManager.TripStartDate = trip.StartDate;
 
             _trips.Id = DatabaseManager.TripId;
             _trips.Name = trip.Name;
@@ -58,6 +59,23 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             var allhumans = _context.Humans.ToList();
             _tfDto.AllHumans = allhumans;
+
+            var start = trip.StartDate;
+            var end = trip.FinishDate;
+            //var dates = new List<DateTime>();
+
+            //for (var dt = start; dt <= end; dt = dt.AddDays(1))
+            //{
+            //    dates.Add(dt);
+            //}
+
+            //TripDates _myTripDates = new TripDates();
+            var tripdates = new List<DateTime>();
+            for (var dt = start; dt <= end; dt = dt.AddDays(1))
+            {
+                tripdates.Add(dt);
+            }
+            _tfDto.GetDates = tripdates;
 
             if (trip == null)
             {

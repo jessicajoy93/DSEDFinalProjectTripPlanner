@@ -8,16 +8,28 @@ namespace DSEDFinalProjectTripPlanner.Business
 {
     public static class DatabaseManager
     {
-        //static Trip _myTrip = new Trip();
+        //Ids
+        public static int TripId { get; set; } = 0;
+        public static int FlightId { get; set; } = 0;
+        public static int LodgingId { get; set; } = 0;
+        public static int OtherTransportationId { get; set; } = 0;
+        public static int RestaurantId { get; set; } = 0;
+        public static int CarRentalId { get; set; } = 0;
+        public static int ActivityTaskId { get; set; } = 0;
+
         public static int TotalNumDays { get; set; }
         public static int TotalDaysToGo { get; set; }
         public static string Shortdate { get; set; }
         public static string Departure { get; set; }
         public static string Arrival { get; set; }
         public static string Duration { get; set; }
-        public static int TripId { get; set; }
-        public static int FlightId { get; set; }
+        public static DateTime TripStartDate { get; set; }
         public static int NumOfHumans { get; set; } = 0;
+
+
+
+
+
 
         public static int addHuman()
         {
