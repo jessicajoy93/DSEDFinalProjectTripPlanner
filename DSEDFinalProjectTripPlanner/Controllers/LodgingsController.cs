@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DSEDFinalProjectTripPlanner.Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,14 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             var lodging = await _context.Lodgings
                 .SingleOrDefaultAsync(m => m.Id == id);
+
+            DatabaseManager.FlightId = 0;
+            DatabaseManager.LodgingId = (int)id;
+            DatabaseManager.OtherTransportationId = 0;
+            DatabaseManager.RestaurantId = 0;
+            DatabaseManager.CarRentalId = 0;
+            DatabaseManager.ActivityTaskId = 0;
+
             if (lodging == null)
             {
                 return NotFound();
@@ -60,7 +69,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 _context.Add(lodging);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { lodging.Id });
             }
             return View(lodging);
         }
@@ -111,7 +120,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { lodging.Id });
             }
             return View(lodging);
         }

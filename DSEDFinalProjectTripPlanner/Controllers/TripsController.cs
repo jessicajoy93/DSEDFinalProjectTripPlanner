@@ -54,22 +54,13 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             _trips.FinishDate = trip.FinishDate;
             _trips.Description = trip.Description;
             //return _trips;
-            var allflights = _context.Flights.ToList();
-            _tfDto.AllFlights = allflights;
 
-            var allhumans = _context.Humans.ToList();
-            _tfDto.AllHumans = allhumans;
+            _tfDto.AllFlights = _context.Flights.ToList();
+            _tfDto.AllLodgings = _context.Lodgings.ToList();
+            _tfDto.AllHumans = _context.Humans.ToList();
 
             var start = trip.StartDate;
             var end = trip.FinishDate;
-            //var dates = new List<DateTime>();
-
-            //for (var dt = start; dt <= end; dt = dt.AddDays(1))
-            //{
-            //    dates.Add(dt);
-            //}
-
-            //TripDates _myTripDates = new TripDates();
             var tripdates = new List<DateTime>();
             for (var dt = start; dt <= end; dt = dt.AddDays(1))
             {

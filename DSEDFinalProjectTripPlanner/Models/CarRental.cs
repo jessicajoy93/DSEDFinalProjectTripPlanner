@@ -15,15 +15,21 @@ namespace DSEDFinalProjectTripPlanner.Models
         [Required]
         public string PickupName { get; set; }
         [Required]
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
+        public string PickupAddress { get; set; }
+        public string PickupSuburb { get; set; }
         [Required]
-        public string AddressCity { get; set; }
+        public string PickupCity { get; set; }
         [Required]
-        public string AddressRegion { get; set; }
-        public string AddressPostcode { get; set; }
+        public string PickupRegion { get; set; }
+        public string PickupPostcode { get; set; }
         [Required]
-        public string AddressCountry { get; set; }
+        public string PickupCountry { get; set; }
+        public string DropoffAddress { get; set; }
+        public string DropoffSuburb { get; set; }
+        public string DropoffCity { get; set; }
+        public string DropoffRegion { get; set; }
+        public string DropoffPostcode { get; set; }
+        public string DropoffCountry { get; set; }
         [Required]
         public DateTime PickupDate { get; set; }
         public DateTime PickupTime { get; set; }
@@ -31,7 +37,7 @@ namespace DSEDFinalProjectTripPlanner.Models
         public DateTime DropoffDate { get; set; }
         public DateTime DropoffTime { get; set; }
         [Phone]
-        public string ContactPhoneNumber { get; set; }
+        public string SupplierContactPhoneNumber { get; set; }
         public int TripId { get; set; }
     }
 }

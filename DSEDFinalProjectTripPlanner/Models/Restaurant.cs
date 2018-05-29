@@ -12,15 +12,15 @@ namespace DSEDFinalProjectTripPlanner.Models
         public int Id { get; set; }
         public string RestaurantName { get; set; }
         [Required]
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
+        public string Address { get; set; }
+        public string Suburb { get; set; }
         [Required]
-        public string AddressCity { get; set; }
+        public string City { get; set; }
         [Required]
-        public string AddressRegion { get; set; }
-        public string AddressPostcode { get; set; }
+        public string Region { get; set; }
+        public string Postcode { get; set; }
         [Required]
-        public string AddressCountry { get; set; }
+        public string Country { get; set; }
         public string Description { get; set; }
         [Required]
         public DateTime Date { get; set; }

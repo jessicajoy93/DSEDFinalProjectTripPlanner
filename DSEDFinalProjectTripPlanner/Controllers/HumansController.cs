@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DSEDFinalProjectTripPlanner.Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -65,7 +66,33 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 _context.Add(human);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details", "Flights", new { Id = human.FlightId });
+
+                if (DatabaseManager.FlightId != 0)
+                {
+                    return RedirectToAction("Details", "Flights", new { Id = human.FlightId });
+                }
+                if (DatabaseManager.LodgingId != 0)
+                {
+                    return RedirectToAction("Details", "Lodgings", new { Id = human.LodgingId });
+                }
+                //if (DatabaseManager.OtherTransportationId != 0)
+                //{
+                //    return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
+                //}
+                //if (DatabaseManager.RestaurantId != 0)
+                //{
+                //    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
+                //}
+                //if (DatabaseManager.CarRentalId != 0)
+                //{
+                //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
+                //}
+                //if (DatabaseManager.ActivityTaskId != 0)
+                //{
+                //    return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
+                //}
+
+
             }
             return View(human);
         }
@@ -116,7 +143,30 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", "Flights", new { Id = human.FlightId });
+                if (DatabaseManager.FlightId != 0)
+                {
+                    return RedirectToAction("Details", "Flights", new { Id = human.FlightId });
+                }
+                if (DatabaseManager.LodgingId != 0)
+                {
+                    return RedirectToAction("Details", "Lodgings", new { Id = human.LodgingId });
+                }
+                //if (DatabaseManager.OtherTransportationId != 0)
+                //{
+                //    return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
+                //}
+                //if (DatabaseManager.RestaurantId != 0)
+                //{
+                //    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
+                //}
+                //if (DatabaseManager.CarRentalId != 0)
+                //{
+                //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
+                //}
+                //if (DatabaseManager.ActivityTaskId != 0)
+                //{
+                //    return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
+                //}
             }
             return View(human);
         }
@@ -147,6 +197,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             var human = await _context.Travellers.SingleOrDefaultAsync(m => m.Id == id);
             _context.Travellers.Remove(human);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 

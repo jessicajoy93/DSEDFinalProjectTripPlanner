@@ -11,13 +11,13 @@ namespace DSEDFinalProjectTripPlanner.Models
         [Required]
         public int Id { get; set; }
         public string ConfirmationNumber { get; set; }
+        [Required]
         public string LodgingName { get; set; }
         [Required]
         public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
         [Required]
+        //public string AddressSuburb { get; set; }
         public string AddressCity { get; set; }
-        [Required]
         public string AddressRegion { get; set; }
         public string AddressPostcode { get; set; }
         [Required]

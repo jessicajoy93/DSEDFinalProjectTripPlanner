@@ -17,11 +17,10 @@ namespace DSEDFinalProjectTripPlanner.Models
         public string Description { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
-        public DateTime StartTime { get; set; }
         [Required]
+        public DateTime StartTime { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime EndTime { get; set; }
-        public string LocationName { get; set; }
         [Required]
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }

@@ -42,9 +42,13 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             TripDTO _tfDto = new TripDTO();
             MyFlights _flights = new MyFlights();
-            AllDateTimes _allDateTimes = new AllDateTimes();
 
             DatabaseManager.FlightId = (int)id;
+            DatabaseManager.LodgingId = 0;
+            DatabaseManager.OtherTransportationId = 0;
+            DatabaseManager.RestaurantId = 0;
+            DatabaseManager.CarRentalId = 0;
+            DatabaseManager.ActivityTaskId = 0;
 
             _flights.Id = DatabaseManager.FlightId;
             _flights.ConfirmationNumber = flight.ConfirmationNumber;
@@ -65,16 +69,6 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             var allhumans = _context.Humans.ToList();
             _tfDto.AllHumans = allhumans;
-
-            _allDateTimes.FlightId = DatabaseManager.FlightId;
-            _allDateTimes.TripId = DatabaseManager.TripId;
-            _allDateTimes.StartDate = flight.DepartureDate;
-            _allDateTimes.StartTime = flight.DepartureTime;
-            _allDateTimes.FinishDate = flight.ArrivalDate;
-            _allDateTimes.FinishTime = flight.ArrivalTime;
-
-            List<AllDateTimes> alldatetimes = _tfDto.GetAllDateTimes;
-            _tfDto.GetAllDateTimes = alldatetimes;
 
             if (flight == null)
             {
@@ -103,7 +97,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 _context.Add(flight);
                 await _context.SaveChangesAsync();
                 int tripId = flight.TripId;
-                return RedirectToAction("Details", "Trips", new { Id = flight.TripId });
+                return RedirectToAction("Details", new { flight.Id });
             }
             return View(flight);
 
@@ -157,7 +151,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", "Trips", new { Id = flight.TripId });
+                return RedirectToAction("Details", new { flight.Id });
             }
             return View(flight);
         }

@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="LodgingName" class="control-label">Lodging Name</label>
+                    <label asp-for="LodgingName" class="control-label">Lodging Name <span class="required">*</span></label>
                     <input asp-for="LodgingName" class="form-control" />
                     <span asp-validation-for="LodgingName" class="text-danger"></span>
                 </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-9">
                 <div class="form-group">
-                    <label asp-for="AddressLine1" class="control-label">Address Line 1</label>
+                    <label asp-for="AddressLine1" class="control-label">Address Line 1 <span class="required">*</span></label>
                     <input asp-for="AddressLine1" class="form-control" />
                     <span asp-validation-for="AddressLine1" class="text-danger"></span>
                 </div>
@@ -51,7 +51,7 @@
 
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="AddressCity" class="control-label">City</label>
+                    <label asp-for="AddressCity" class="control-label">City <span class="required">*</span></label>
                     <input asp-for="AddressCity" class="form-control" />
                     <span asp-validation-for="AddressCity" class="text-danger"></span>
                 </div>
@@ -65,7 +65,7 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="AddressCountry" class="control-label">Country</label>
+                    <label asp-for="AddressCountry" class="control-label">Country <span class="required">*</span></label>
                     <input asp-for="AddressCountry" class="form-control" />
                     <span asp-validation-for="AddressCountry" class="text-danger"></span>
                 </div>
@@ -81,14 +81,14 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="ArrivalDate" class="control-label">Date</label>
+                    <label asp-for="ArrivalDate" class="control-label">Date <span class="required">*</span></label>
                     <input asp-for="ArrivalDate" type="date" class="form-control" />
                     <span asp-validation-for="ArrivalDate" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="ArrivalTime" class="control-label">Time</label>
+                    <label asp-for="ArrivalTime" class="control-label">Time <span class="required">*</span></label>
                     <input asp-for="ArrivalTime" type="time" class="form-control" />
                     <span asp-validation-for="ArrivalTime" class="text-danger"></span>
                 </div>
@@ -103,14 +103,14 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="DepartureDate" class="control-label">Date</label>
+                    <label asp-for="DepartureDate" class="control-label">Date <span class="required">*</span></label>
                     <input asp-for="DepartureDate" type="date" class="form-control" />
                     <span asp-validation-for="DepartureDate" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="DepartureTime" class="control-label">Time</label>
+                    <label asp-for="DepartureTime" class="control-label">Time <span class="required">*</span></label>
                     <input asp-for="DepartureTime" type="time" class="form-control" />
                     <span asp-validation-for="DepartureTime" class="text-danger"></span>
                 </div>

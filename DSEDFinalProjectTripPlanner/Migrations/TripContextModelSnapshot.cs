@@ -48,8 +48,6 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.Property<DateTime>("EndTime");
 
-                    b.Property<string>("LocationName");
-
                     b.Property<int>("NumOfPeopleAttending");
 
                     b.Property<DateTime>("StartDate");
@@ -73,36 +71,48 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AddressCity")
-                        .IsRequired();
-
-                    b.Property<string>("AddressCountry")
-                        .IsRequired();
-
-                    b.Property<string>("AddressLine1")
-                        .IsRequired();
-
-                    b.Property<string>("AddressLine2");
-
-                    b.Property<string>("AddressPostcode");
-
-                    b.Property<string>("AddressRegion")
-                        .IsRequired();
-
                     b.Property<string>("ConfirmationNumber");
 
-                    b.Property<string>("ContactPhoneNumber");
+                    b.Property<string>("DropoffAddress");
+
+                    b.Property<string>("DropoffCity");
+
+                    b.Property<string>("DropoffCountry");
 
                     b.Property<DateTime>("DropoffDate");
 
+                    b.Property<string>("DropoffPostcode");
+
+                    b.Property<string>("DropoffRegion");
+
+                    b.Property<string>("DropoffSuburb");
+
                     b.Property<DateTime>("DropoffTime");
+
+                    b.Property<string>("PickupAddress")
+                        .IsRequired();
+
+                    b.Property<string>("PickupCity")
+                        .IsRequired();
+
+                    b.Property<string>("PickupCountry")
+                        .IsRequired();
 
                     b.Property<DateTime>("PickupDate");
 
                     b.Property<string>("PickupName")
                         .IsRequired();
 
+                    b.Property<string>("PickupPostcode");
+
+                    b.Property<string>("PickupRegion")
+                        .IsRequired();
+
+                    b.Property<string>("PickupSuburb");
+
                     b.Property<DateTime>("PickupTime");
+
+                    b.Property<string>("SupplierContactPhoneNumber");
 
                     b.Property<string>("SuppplierName");
 
@@ -201,12 +211,9 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.Property<string>("AddressLine1")
                         .IsRequired();
 
-                    b.Property<string>("AddressLine2");
-
                     b.Property<string>("AddressPostcode");
 
-                    b.Property<string>("AddressRegion")
-                        .IsRequired();
+                    b.Property<string>("AddressRegion");
 
                     b.Property<DateTime>("ArrivalDate");
 
@@ -218,7 +225,8 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.Property<DateTime>("DepartureTime");
 
-                    b.Property<string>("LodgingName");
+                    b.Property<string>("LodgingName")
+                        .IsRequired();
 
                     b.Property<int>("NumOfGuests");
 
@@ -238,45 +246,45 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ArrivalAddressCity")
+                    b.Property<string>("ArrivalAddress")
                         .IsRequired();
 
-                    b.Property<string>("ArrivalAddressCountry")
+                    b.Property<string>("ArrivalCity")
                         .IsRequired();
 
-                    b.Property<string>("ArrivalAddressLine1")
-                        .IsRequired();
-
-                    b.Property<string>("ArrivalAddressLine2");
-
-                    b.Property<string>("ArrivalAddressPostcode");
-
-                    b.Property<string>("ArrivalAddressRegion")
+                    b.Property<string>("ArrivalCountry")
                         .IsRequired();
 
                     b.Property<DateTime>("ArrivalDate");
+
+                    b.Property<string>("ArrivalPostcode");
+
+                    b.Property<string>("ArrivalRegion")
+                        .IsRequired();
+
+                    b.Property<string>("ArrivalSuburb");
 
                     b.Property<DateTime>("ArrivalTime");
 
                     b.Property<string>("CarrierName");
 
-                    b.Property<string>("DepartureAddressCity")
+                    b.Property<string>("DepartureAddress")
                         .IsRequired();
 
-                    b.Property<string>("DepartureAddressCountry")
+                    b.Property<string>("DepartureCity")
                         .IsRequired();
 
-                    b.Property<string>("DepartureAddressLine1")
-                        .IsRequired();
-
-                    b.Property<string>("DepartureAddressLine2");
-
-                    b.Property<string>("DepartureAddressPostcode");
-
-                    b.Property<string>("DepartureAddressRegion")
+                    b.Property<string>("DepartureCountry")
                         .IsRequired();
 
                     b.Property<DateTime>("DepartureDate");
+
+                    b.Property<string>("DeparturePostcode");
+
+                    b.Property<string>("DepartureRegion")
+                        .IsRequired();
+
+                    b.Property<string>("DepartureSuburb");
 
                     b.Property<DateTime>("DepartureTime");
 
@@ -294,23 +302,16 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AddressCity")
+                    b.Property<string>("Address")
                         .IsRequired();
 
-                    b.Property<string>("AddressCountry")
-                        .IsRequired();
-
-                    b.Property<string>("AddressLine1")
-                        .IsRequired();
-
-                    b.Property<string>("AddressLine2");
-
-                    b.Property<string>("AddressPostcode");
-
-                    b.Property<string>("AddressRegion")
+                    b.Property<string>("City")
                         .IsRequired();
 
                     b.Property<string>("ConfirmationNumber");
+
+                    b.Property<string>("Country")
+                        .IsRequired();
 
                     b.Property<string>("Cuisine");
 
@@ -324,9 +325,16 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.Property<int>("NumberInParty");
 
+                    b.Property<string>("Postcode");
+
                     b.Property<string>("PriceRange");
 
+                    b.Property<string>("Region")
+                        .IsRequired();
+
                     b.Property<string>("RestaurantName");
+
+                    b.Property<string>("Suburb");
 
                     b.Property<DateTime>("Time");
 

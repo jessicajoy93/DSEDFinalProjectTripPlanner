@@ -12,15 +12,15 @@ namespace DSEDFinalProjectTripPlanner.Models
         public string TypeOfTransport { get; set; }
         public string CarrierName { get; set; }
         [Required]
-        public string DepartureAddressLine1 { get; set; }
-        public string DepartureAddressLine2 { get; set; }
+        public string DepartureAddress { get; set; }
+        public string DepartureSuburb { get; set; }
         [Required]
-        public string DepartureAddressCity { get; set; }
+        public string DepartureCity { get; set; }
         [Required]
-        public string DepartureAddressRegion { get; set; }
-        public string DepartureAddressPostcode { get; set; }
+        public string DepartureRegion { get; set; }
+        public string DeparturePostcode { get; set; }
         [Required]
-        public string DepartureAddressCountry { get; set; }
+        public string DepartureCountry { get; set; }
         [Required]
         public DateTime DepartureDate { get; set; }
         public DateTime DepartureTime { get; set; }
@@ -28,15 +28,15 @@ namespace DSEDFinalProjectTripPlanner.Models
         public DateTime ArrivalDate { get; set; }
         public DateTime ArrivalTime { get; set; }
         [Required]
-        public string ArrivalAddressLine1 { get; set; }
-        public string ArrivalAddressLine2 { get; set; }
+        public string ArrivalAddress { get; set; }
+        public string ArrivalSuburb { get; set; }
         [Required]
-        public string ArrivalAddressCity { get; set; }
+        public string ArrivalCity { get; set; }
         [Required]
-        public string ArrivalAddressRegion { get; set; }
-        public string ArrivalAddressPostcode { get; set; }
+        public string ArrivalRegion { get; set; }
+        public string ArrivalPostcode { get; set; }
         [Required]
-        public string ArrivalAddressCountry { get; set; }
+        public string ArrivalCountry { get; set; }
         public int TripId { get; set; }
     }
 }

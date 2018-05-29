@@ -191,13 +191,19 @@ a {
 
 
 /* Flights */
-.flightDetails h4, h5 {
+.details h4, h5 {
     text-align: left;
     color: #000000;
 }
 
 .bold {
     font-weight: bold;
+}
+
+.checkinout {
+    font-weight: bolder;
+    font-size: 20pt;
+    font-style: italic;
 }
 
 .passengers h4 {
@@ -225,6 +231,7 @@ a {
     background-color: #DB8CC6;
     padding: 5px;
     overflow: hidden;
+    margin: 5px;
 }
 
     .date h3 {

@@ -57,11 +57,45 @@
             </p>
         </div>
     </div>
+    @*<div class="passengers">
+            <h4>Who's Going?</h4>
+            @foreach (var human in Model.AllHumans.OrderBy(human => human.TicketNumber).ThenBy(human => human.Id))
+            {
+                @if (human.TripId == DatabaseManager.TripId && human.FlightId == DatabaseManager.FlightId)
+                {
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <p>@Html.DisplayFor(modelItem => human.Fullname)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>Frequent Flyer #: @Html.DisplayFor(modelItem => human.FrequentFlyerNumber)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                Seat #: @Html.DisplayFor(modelItem => human.TicketNumber)
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                <a asp-controller="Humans" asp-action="Edit" asp-route-id="@human.Id">Edit</a> |
+                                <a asp-controller="Humans" asp-action="Delete" asp-route-id="@human.Id">Delete</a>
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>*@
+
+
     <div class="col-md-12">
         <p>
             <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
             <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
-            <a asp-action="Index">Back to List</a>
+            <a asp-controller="Humans" asp-action="Create">Add Guest</a> |
+            <a asp-area="" asp-controller="Trips" asp-action="Details/@DatabaseManager.TripId">
+                Back to List
+            </a>
         </p>
     </div>
 </div>

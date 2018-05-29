@@ -13,6 +13,36 @@
             ViewData["FrequentFlyerNumber"] = "Frequent Flyer #";
             ViewData["TicketNumber"] = "Seat #";
         }
+        if (DatabaseManager.LodgingId != 0)
+        {
+            ViewData["Header"] = "Add Guest";
+            ViewData["FrequentFlyerNumber"] = "Frequent Guest #";
+            ViewData["TicketNumber"] = "Ticket #";
+        }
+        if (DatabaseManager.OtherTransportationId != 0)
+        {
+            ViewData["Header"] = "Add Passenger";
+            ViewData["FrequentFlyerNumber"] = "Frequent Traveller #";
+            ViewData["TicketNumber"] = "Seat #";
+        }
+        if (DatabaseManager.RestaurantId != 0)
+        {
+            ViewData["Header"] = "Add Diner";
+            ViewData["FrequentFlyerNumber"] = "Loyalty Program #";
+            ViewData["TicketNumber"] = "Ticket #";
+        }
+        if (DatabaseManager.CarRentalId != 0)
+        {
+            ViewData["Header"] = "Add Driver";
+            ViewData["FrequentFlyerNumber"] = "Frequent Renter #";
+            ViewData["TicketNumber"] = "Ticket #";
+        }
+        if (DatabaseManager.ActivityTaskId != 0)
+        {
+            ViewData["Header"] = "Add Attendee";
+            ViewData["FrequentFlyerNumber"] = "Loyalty Program #";
+            ViewData["TicketNumber"] = "Ticket #";
+        }
     }
     else
     {
@@ -27,7 +57,9 @@
 <hr />
 @if (DatabaseManager.TripId != 0)
 {
-    @if (DatabaseManager.FlightId != 0)
+    @if (
+       DatabaseManager.FlightId != 0 || DatabaseManager.LodgingId != 0 || DatabaseManager.OtherTransportationId != 0 || DatabaseManager.RestaurantId != 0 || DatabaseManager.CarRentalId != 0 || DatabaseManager.ActivityTaskId != 0
+       )
     {
         <div class="row">
             <div class="col-md-12">
@@ -116,9 +148,11 @@
                 </form>
             </div>
         </div>
-
     }
-    <p>You can't add a human without selecting a plan</p>
+    else
+    {
+        <p>You can't add a human without selecting a plan</p>
+    }
     <div>
         <a asp-area="" asp-controller="Trips" asp-action="Details/@DatabaseManager.TripId">Back to List</a>
     </div>
