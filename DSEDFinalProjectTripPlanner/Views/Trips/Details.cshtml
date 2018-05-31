@@ -55,7 +55,7 @@
             <div class="modal-body col-md-6">
                 <h4>Activites</h4>
                 <a asp-area="" asp-controller="Lodgings" asp-action="Create">Lodging</a><br />
-                <a>Restaurant</a><br />
+                <a asp-area="" asp-controller="Restaurants" asp-action="Create">Restaurant</a><br />
                 <a>Activity</a>
             </div>
             <div class="clear"></div>
@@ -94,7 +94,7 @@
                         {
                             <div class="col-md-12">
                                 <div class="col-md-1">
-                                    <div class="details">
+                                    <div class="links">
                                         <p>
                                             <img class="image-responsive" src="~/images/plane.png" />
                                             <a asp-controller="Flights" asp-action="Edit" asp-route-id="@flight.Id">Edit</a><br />
@@ -219,7 +219,7 @@
                         {
                             <div class="col-md-12">
                                 <div class="col-md-1">
-                                    <div class="details">
+                                    <div class="links">
                                         <p>
                                             <img class="image-responsive" src="~/images/resort.png" />
                                             <a asp-controller="Lodgings" asp-action="Edit" asp-route-id="@lodging.Id">Edit</a><br />
@@ -230,105 +230,75 @@
                                 </div>
                                 <div class="col-md-11">
                                     <div class="col-md-12">
-                                        <div class="details">
-                                            <h5>
-                                                @DatabaseManager.DepartureDate(lodging.ArrivalDate)
-                                            </h5>
-                                            <h4>
-                                                Arrive @Html.DisplayFor(modelItem => lodging.LodgingName)
-                                            </h4>
-                                            <p>
-                                                Confirmation Number: @Html.DisplayFor(modelItem => lodging.ConfirmationNumber)
-                                            </p>
+                                        <div class="col-md-12">
+                                            <div class="details">
+                                                <h5>
+                                                    @DatabaseManager.DepartureDate(lodging.ArrivalDate)
+                                                </h5>
+                                                <h4>
+                                                    Arrive @Html.DisplayFor(modelItem => lodging.LodgingName)
+                                                </h4>
+                                                <p>
+                                                    Confirmation Number: @Html.DisplayFor(modelItem => lodging.ConfirmationNumber)
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <span class="bold">Check-in</span><br />
+                                                    <span class="checkinout">@DatabaseManager.ArrivalTime(lodging.ArrivalTime)</span><br />
+                                                    @Html.DisplayFor(modelItem => lodging.AddressLine1),
+                                                    @Html.DisplayFor(modelItem => lodging.AddressCity),
+                                                    @Html.DisplayFor(modelItem => lodging.AddressPostcode), <br />
+                                                    @Html.DisplayFor(modelItem => lodging.AddressRegion),
+                                                    @Html.DisplayFor(modelItem => lodging.AddressCountry)
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <span class="bold">Check-out</span><br />
+                                                    @DatabaseManager.DepartureDate(lodging.DepartureDate)
+                                                    (@DatabaseManager.NumOfDays(lodging.DepartureDate, lodging.ArrivalDate) Nights)<br />
+                                                    @DatabaseManager.ArrivalTime(lodging.DepartureTime)
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="passengers">
+                                            <h4>Guests</h4>
+                                            <div class="human">
+                                                @foreach (var human in Model.AllHumans.OrderBy(human => human.TicketNumber).ThenBy(human => human.Id))
+                                                {
+                                                    @if (human.TripId == DatabaseManager.TripId && human.LodgingId == lodging.Id)
+                                                    {
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-3">
+                                                                <p>@Html.DisplayFor(modelItem => human.Fullname)</p>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>Frequent Flyer #: @Html.DisplayFor(modelItem => human.FrequentFlyerNumber)</p>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>
+                                                                    Seat #: @Html.DisplayFor(modelItem => human.TicketNumber)
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>
+                                                                    <a asp-controller="Humans" asp-action="Edit" asp-route-id="@lodging.Id">Edit</a> |
+                                                                    <a asp-controller="Humans" asp-action="Delete" asp-route-id="@lodging.Id">Delete</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-12">
-                                        <div class="col-md-6">
-                                            <p>
-                                                <span class="bold">Check-in</span><br />
-                                                <span class="checkinout">@DatabaseManager.ArrivalTime(lodging.ArrivalTime)</span><br />
-                                                @Html.DisplayFor(modelItem => lodging.AddressLine1),
-                                                @Html.DisplayFor(modelItem => lodging.AddressCity),
-                                                @Html.DisplayFor(modelItem => lodging.AddressPostcode), <br />
-                                                @Html.DisplayFor(modelItem => lodging.AddressRegion),
-                                                @Html.DisplayFor(modelItem => lodging.AddressCountry)
-                                            </p>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <p>
-                                                <span class="bold">Check-out</span><br />
-                                                @DatabaseManager.DepartureDate(lodging.DepartureDate)
-                                                (@DatabaseManager.NumOfDays(lodging.DepartureDate, lodging.ArrivalDate) Nights)<br />
-                                                @DatabaseManager.ArrivalTime(lodging.DepartureTime)
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-
-                                <div class="passengers">
-                                    <h4>Guest Info</h4>
                                 </div>
                             </div>
-                            @foreach (var human in Model.AllHumans.OrderBy(human => human.TicketNumber).ThenBy(human => human.Id))
-                            {
-                                @if (human.TripId == DatabaseManager.TripId && human.FlightId == lodging.Id)
-                                {
-                                    <div class="col-md-12">
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-11">
-                                            <div class="col-md-3">
-                                                <p>@Html.DisplayFor(modelItem => human.Fullname)</p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>Frequent Flyer #: @Html.DisplayFor(modelItem => human.FrequentFlyerNumber)</p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>
-                                                    Seat #: @Html.DisplayFor(modelItem => human.TicketNumber)
-                                                </p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>
-                                                    <a asp-controller="Humans" asp-action="Edit" asp-route-id="@human.Id">Edit</a> |
-                                                    <a asp-controller="Humans" asp-action="Delete" asp-route-id="@human.Id">Delete</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            }
-
-                            @foreach (var human in Model.AllHumans.OrderBy(human => human.TicketNumber).ThenBy(human => human.Id))
-                            {
-                                @if (human.TripId == DatabaseManager.TripId && human.LodgingId == lodging.Id)
-                                {
-                                    <div class="col-md-12">
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-11">
-                                            <div class="col-md-3">
-                                                <p>@Html.DisplayFor(modelItem => human.Fullname)</p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>Frequent Flyer #: @Html.DisplayFor(modelItem => human.FrequentFlyerNumber)</p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>
-                                                    Seat #: @Html.DisplayFor(modelItem => human.TicketNumber)
-                                                </p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>
-                                                    <a asp-controller="Humans" asp-action="Edit" asp-route-id="@lodging.Id">Edit</a> |
-                                                    <a asp-controller="Humans" asp-action="Delete" asp-route-id="@lodging.Id">Delete</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            }
                         }
                     }
                 </div>
@@ -342,7 +312,7 @@
                         {
                             <div class="col-md-12">
                                 <div class="col-md-1">
-                                    <div class="details">
+                                    <div class="links">
                                         <p>
                                             <img class="image-responsive" src="~/images/resort.png" />
                                             <a asp-controller="Flights" asp-action="Edit" asp-route-id="@lodging.Id">Edit</a><br />
@@ -353,77 +323,78 @@
                                 </div>
                                 <div class="col-md-11">
                                     <div class="col-md-12">
-                                        <div class="details">
-                                            <h5>
-                                                @DatabaseManager.DepartureDate(lodging.DepartureDate)
-                                            </h5>
-                                            <h4>
-                                                Depart @Html.DisplayFor(modelItem => lodging.LodgingName)
-                                            </h4>
-                                            <p>
-                                                Confirmation Number: @Html.DisplayFor(modelItem => lodging.ConfirmationNumber)
-                                            </p>
+                                        <div class="col-md-12">
+                                            <div class="details">
+                                                <h5>
+                                                    @DatabaseManager.DepartureDate(lodging.DepartureDate)
+                                                </h5>
+                                                <h4>
+                                                    Depart @Html.DisplayFor(modelItem => lodging.LodgingName)
+                                                </h4>
+                                                <p>
+                                                    Confirmation Number: @Html.DisplayFor(modelItem => lodging.ConfirmationNumber)
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <span class="bold">Check-in</span><br />
+                                                    @DatabaseManager.ArrivalDate(lodging.ArrivalDate) at
+                                                    @DatabaseManager.ArrivalTime(lodging.ArrivalTime)<br />
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <span class="bold">Check-out</span><br />
+                                                    <span class="checkinout">
+                                                        @DatabaseManager.ArrivalTime(lodging.DepartureTime)
+                                                    </span><br />
+                                                    @Html.DisplayFor(modelItem => lodging.AddressLine1),
+                                                    @Html.DisplayFor(modelItem => lodging.AddressCity),
+                                                    @Html.DisplayFor(modelItem => lodging.AddressPostcode), <br />
+                                                    @Html.DisplayFor(modelItem => lodging.AddressRegion),
+                                                    @Html.DisplayFor(modelItem => lodging.AddressCountry)
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="passengers">
+                                            <h4>Who's Going?</h4>
+                                            @foreach (var human in Model.AllHumans.OrderBy(human => human.TicketNumber).ThenBy(human => human.Id))
+                                            {
+                                                @if (human.TripId == DatabaseManager.TripId && human.LodgingId == lodging.Id)
+                                                {
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-3">
+                                                            <p>@Html.DisplayFor(modelItem => human.Fullname)</p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <p>Frequent Flyer #: @Html.DisplayFor(modelItem => human.FrequentFlyerNumber)</p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <p>
+                                                                Seat #: @Html.DisplayFor(modelItem => human.TicketNumber)
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <p>
+                                                                <a asp-controller="Humans" asp-action="Edit" asp-route-id="@lodging.Id">Edit</a> |
+                                                                <a asp-controller="Humans" asp-action="Delete" asp-route-id="@lodging.Id">Delete</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
-                                        <div class="col-md-6">
-                                            <p>
-                                                <span class="bold">Check-in</span><br />
-                                                @DatabaseManager.ArrivalDate(lodging.ArrivalDate) at
-                                                @DatabaseManager.ArrivalTime(lodging.ArrivalTime)<br />
-                                            </p>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <p>
-                                                <span class="bold">Check-out</span><br />
-                                                <span class="checkinout">
-                                                    @DatabaseManager.ArrivalTime(lodging.DepartureTime)
-                                                </span><br />
-                                                @Html.DisplayFor(modelItem => lodging.AddressLine1),
-                                                @Html.DisplayFor(modelItem => lodging.AddressCity),
-                                                @Html.DisplayFor(modelItem => lodging.AddressPostcode), <br />
-                                                @Html.DisplayFor(modelItem => lodging.AddressRegion),
-                                                @Html.DisplayFor(modelItem => lodging.AddressCountry)
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="clear"></div>
 
-                                <div class="passengers">
-                                    <h4>Who's Going?</h4>
-                                </div>
                             </div>
-                            @foreach (var human in Model.AllHumans.OrderBy(human => human.TicketNumber).ThenBy(human => human.Id))
-                            {
-                                @if (human.TripId == DatabaseManager.TripId && human.LodgingId == lodging.Id)
-                                {
-                                    <div class="col-md-12">
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-11">
-                                            <div class="col-md-3">
-                                                <p>@Html.DisplayFor(modelItem => human.Fullname)</p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>Frequent Flyer #: @Html.DisplayFor(modelItem => human.FrequentFlyerNumber)</p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>
-                                                    Seat #: @Html.DisplayFor(modelItem => human.TicketNumber)
-                                                </p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>
-                                                    <a asp-controller="Humans" asp-action="Edit" asp-route-id="@lodging.Id">Edit</a> |
-                                                    <a asp-controller="Humans" asp-action="Delete" asp-route-id="@lodging.Id">Delete</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            }
+
                         }
                     }
                 </div>
@@ -441,7 +412,7 @@
                         {
                             <div class="col-md-12">
                                 <div class="col-md-1">
-                                    <div class="details">
+                                    <div class="links">
                                         <p>
                                             <img class="image-responsive" src="~/images/train.png" />
                                             <a asp-controller="OtherTransportations" asp-action="Edit" asp-route-id="@ot.Id">Edit</a><br />

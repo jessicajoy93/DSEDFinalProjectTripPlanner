@@ -1,0 +1,120 @@
+﻿@model DSEDFinalProjectTripPlanner.Models.Restaurant
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Restaurant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RestaurantName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RestaurantName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Suburb)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Suburb)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Postcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuisine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cuisine)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberInParty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberInParty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmationNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmationNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HoursOfOperation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HoursOfOperation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DressCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DressCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceRange)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PriceRange)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TripId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TripId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -180,7 +180,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             var otherTransportation = await _context.OtherTransportations.SingleOrDefaultAsync(m => m.Id == id);
             _context.OtherTransportations.Remove(otherTransportation);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Trips", new { Id = DatabaseManager.TripId });
         }
 
         private bool OtherTransportationExists(int id)

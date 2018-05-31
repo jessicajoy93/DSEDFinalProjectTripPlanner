@@ -19,14 +19,14 @@
     <div class="col-md-12">
         <div class="destination">
             <hr />
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <h3>
                     <a asp-action="Details" asp-route-id="@item.Id">
                         @Html.DisplayFor(modelItem => item.Name)
                     </a>
                 </h3>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <p>@Html.DisplayFor(modelItem => item.DestinationCity), @Html.DisplayFor(modelItem => item.DestinationCountry)</p>
                 <p>
                     @DatabaseManager.StartDate(item.StartDate)

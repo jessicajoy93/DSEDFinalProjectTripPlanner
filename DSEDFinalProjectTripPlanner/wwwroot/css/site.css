@@ -102,8 +102,9 @@ a {
     color: red;
 }
 
-.destination {
-    background-color: gray;
+.destination p {
+    /*background-color: gray;*/
+    text-align: center;
 }
 
 #hidden {
@@ -191,9 +192,13 @@ a {
 
 
 /* Flights */
-.details h4, h5 {
+.details h4, h5, p {
     text-align: left;
     color: #000000;
+}
+
+.links p {
+    text-align: center;
 }
 
 .bold {
@@ -215,10 +220,6 @@ a {
 .passengers h4 {
     color: #000000;
     text-align: left;
-}
-
-.details p {
-    text-align: center;
 }
 
 .lodgingName p {
@@ -263,13 +264,6 @@ a {
     /*background-color: lightpink;*/
     margin: 0px 10px 0px 10px;
 }
-
-/*.human {
-    display: none;
-}
-
-    .human a {
-    }*/
 
 .image-responsive {
     width: 80%;

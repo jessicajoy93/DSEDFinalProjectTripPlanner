@@ -183,7 +183,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             var flight = await _context.Flights.SingleOrDefaultAsync(m => m.Id == id);
             _context.Flights.Remove(flight);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Trips", new { Id = DatabaseManager.TripId });
         }
 
         private bool FlightExists(int id)
