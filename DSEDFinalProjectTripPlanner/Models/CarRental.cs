@@ -32,12 +32,14 @@ namespace DSEDFinalProjectTripPlanner.Models
         public string DropoffCountry { get; set; }
         [Required]
         public DateTime PickupDate { get; set; }
+        [Required]
         public DateTime PickupTime { get; set; }
         [Required]
         public DateTime DropoffDate { get; set; }
+        [Required]
         public DateTime DropoffTime { get; set; }
         [Phone]
-        public string SupplierContactPhoneNumber { get; set; }
+        public string SupplierPhoneNumber { get; set; }
         public int TripId { get; set; }
     }
 }

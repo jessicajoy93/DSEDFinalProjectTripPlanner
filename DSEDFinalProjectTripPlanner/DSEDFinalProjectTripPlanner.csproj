@@ -40,6 +40,12 @@
     <Compile Remove="Migrations\20180529205016_lodgingname.Designer.cs" />
     <Compile Remove="Migrations\20180529205235_init.cs" />
     <Compile Remove="Migrations\20180529205235_init.Designer.cs" />
+    <Compile Remove="Migrations\20180529234639_init.cs" />
+    <Compile Remove="Migrations\20180529234639_init.Designer.cs" />
+    <Compile Remove="Migrations\20180530002507_otconfirmationnum.cs" />
+    <Compile Remove="Migrations\20180530002507_otconfirmationnum.Designer.cs" />
+    <Compile Remove="Migrations\20180531204215_activitytask.cs" />
+    <Compile Remove="Migrations\20180531204215_activitytask.Designer.cs" />
   </ItemGroup>
 
 

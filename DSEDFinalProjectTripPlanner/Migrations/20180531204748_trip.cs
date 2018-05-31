@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DSEDFinalProjectTripPlanner.Migrations
 {
-    public partial class init : Migration
+    public partial class trip : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,19 +14,19 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    AddressCity = table.Column<string>(nullable: false),
-                    AddressCountry = table.Column<string>(nullable: false),
-                    AddressLine1 = table.Column<string>(nullable: false),
-                    AddressLine2 = table.Column<string>(nullable: true),
-                    AddressPostcode = table.Column<string>(nullable: true),
-                    AddressRegion = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
+                    City = table.Column<string>(nullable: false),
                     ConfirmationNumber = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     EndDate = table.Column<DateTime>(nullable: false),
                     EndTime = table.Column<DateTime>(nullable: false),
                     NumOfPeopleAttending = table.Column<int>(nullable: false),
+                    Postcode = table.Column<string>(nullable: true),
+                    Region = table.Column<string>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
                     StartTime = table.Column<DateTime>(nullable: false),
+                    Suburb = table.Column<string>(nullable: true),
                     SupplierName = table.Column<string>(nullable: true),
                     TripId = table.Column<int>(nullable: false),
                     TypeOfActivity = table.Column<string>(nullable: false)
@@ -60,7 +60,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     PickupRegion = table.Column<string>(nullable: false),
                     PickupSuburb = table.Column<string>(nullable: true),
                     PickupTime = table.Column<DateTime>(nullable: false),
-                    SupplierContactPhoneNumber = table.Column<string>(nullable: true),
+                    SupplierPhoneNumber = table.Column<string>(nullable: true),
                     SuppplierName = table.Column<string>(nullable: true),
                     TripId = table.Column<int>(nullable: false)
                 },
@@ -124,11 +124,12 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Address = table.Column<string>(nullable: false),
                     AddressCity = table.Column<string>(nullable: false),
                     AddressCountry = table.Column<string>(nullable: false),
-                    AddressLine1 = table.Column<string>(nullable: false),
                     AddressPostcode = table.Column<string>(nullable: true),
-                    AddressRegion = table.Column<string>(nullable: true),
+                    AddressRegion = table.Column<string>(nullable: false),
+                    AddressSuburb = table.Column<string>(nullable: false),
                     ArrivalDate = table.Column<DateTime>(nullable: false),
                     ArrivalTime = table.Column<DateTime>(nullable: false),
                     ConfirmationNumber = table.Column<string>(nullable: true),
@@ -160,6 +161,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     ArrivalSuburb = table.Column<string>(nullable: true),
                     ArrivalTime = table.Column<DateTime>(nullable: false),
                     CarrierName = table.Column<string>(nullable: true),
+                    ConfirmationNumber = table.Column<string>(nullable: true),
                     DepartureAddress = table.Column<string>(nullable: false),
                     DepartureCity = table.Column<string>(nullable: false),
                     DepartureCountry = table.Column<string>(nullable: false),
@@ -195,7 +197,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     Postcode = table.Column<string>(nullable: true),
                     PriceRange = table.Column<string>(nullable: true),
                     Region = table.Column<string>(nullable: false),
-                    RestaurantName = table.Column<string>(nullable: true),
+                    RestaurantName = table.Column<string>(nullable: false),
                     Suburb = table.Column<string>(nullable: true),
                     Time = table.Column<DateTime>(nullable: false),
                     TripId = table.Column<int>(nullable: false)

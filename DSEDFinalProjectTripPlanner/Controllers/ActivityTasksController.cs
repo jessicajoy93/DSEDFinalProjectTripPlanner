@@ -2,31 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DSEDFinalProjectTripPlanner.Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DSEDFinalProjectTripPlanner.Data;
 using DSEDFinalProjectTripPlanner.Models;
+using DSEDFinalProjectTripPlanner.Business;
 
 namespace DSEDFinalProjectTripPlanner.Controllers
 {
-    public class LodgingsController : Controller
+    public class ActivityTasksController : Controller
     {
         private readonly TripContext _context;
 
-        public LodgingsController(TripContext context)
+        public ActivityTasksController(TripContext context)
         {
             _context = context;
         }
 
-        // GET: Lodgings
+        // GET: ActivityTasks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Lodgings.ToListAsync());
+            return View(await _context.ActivityTasks.ToListAsync());
         }
 
-        // GET: Lodgings/Details/5
+        // GET: ActivityTasks/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,47 +34,39 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 return NotFound();
             }
 
-            var lodging = await _context.Lodgings
+            var activityTask = await _context.ActivityTasks
                 .SingleOrDefaultAsync(m => m.Id == id);
-
-            DatabaseManager.FlightId = 0;
-            DatabaseManager.LodgingId = (int)id;
-            DatabaseManager.OtherTransportationId = 0;
-            DatabaseManager.RestaurantId = 0;
-            DatabaseManager.CarRentalId = 0;
-            DatabaseManager.ActivityTaskId = 0;
-
-            if (lodging == null)
+            if (activityTask == null)
             {
                 return NotFound();
             }
 
-            return View(lodging);
+            return View(activityTask);
         }
 
-        // GET: Lodgings/Create
+        // GET: ActivityTasks/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Lodgings/Create
+        // POST: ActivityTasks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ConfirmationNumber,LodgingName,Address,Suburb,City,Region,Postcode,Country,ArrivalDate,ArrivalTime,DepartureDate,DepartureTime,NumOfGuests,NumOfRooms,RoomDescription,TripId")] Lodging lodging)
+        public async Task<IActionResult> Create([Bind("Id,TypeOfActivity,ConfirmationNumber,SupplierName,Description,StartDate,StartTime,EndDate,EndTime,Address,Suburb,City,Region,Postcode,Country,NumOfPeopleAttending,TripId")] ActivityTask activityTask)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(lodging);
+                _context.Add(activityTask);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details", new { lodging.Id });
+                return RedirectToAction("Details", new { activityTask.Id });
             }
-            return View(lodging);
+            return View(activityTask);
         }
 
-        // GET: Lodgings/Edit/5
+        // GET: ActivityTasks/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,22 +74,22 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 return NotFound();
             }
 
-            var lodging = await _context.Lodgings.SingleOrDefaultAsync(m => m.Id == id);
-            if (lodging == null)
+            var activityTask = await _context.ActivityTasks.SingleOrDefaultAsync(m => m.Id == id);
+            if (activityTask == null)
             {
                 return NotFound();
             }
-            return View(lodging);
+            return View(activityTask);
         }
 
-        // POST: Lodgings/Edit/5
+        // POST: ActivityTasks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ConfirmationNumber,LodgingName,Address,Suburb,City,Region,Postcode,Country,ArrivalDate,ArrivalTime,DepartureDate,DepartureTime,NumOfGuests,NumOfRooms,RoomDescription,TripId")] Lodging lodging)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TypeOfActivity,ConfirmationNumber,SupplierName,Description,StartDate,StartTime,EndDate,EndTime,Address,Suburb,City,Region,Postcode,Country,NumOfPeopleAttending,TripId")] ActivityTask activityTask)
         {
-            if (id != lodging.Id)
+            if (id != activityTask.Id)
             {
                 return NotFound();
             }
@@ -106,12 +98,12 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 try
                 {
-                    _context.Update(lodging);
+                    _context.Update(activityTask);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LodgingExists(lodging.Id))
+                    if (!ActivityTaskExists(activityTask.Id))
                     {
                         return NotFound();
                     }
@@ -120,12 +112,12 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", new { lodging.Id });
+                return RedirectToAction("Details", new { activityTask.Id });
             }
-            return View(lodging);
+            return View(activityTask);
         }
 
-        // GET: Lodgings/Delete/5
+        // GET: ActivityTasks/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,30 +125,30 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 return NotFound();
             }
 
-            var lodging = await _context.Lodgings
+            var activityTask = await _context.ActivityTasks
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (lodging == null)
+            if (activityTask == null)
             {
                 return NotFound();
             }
 
-            return View(lodging);
+            return View(activityTask);
         }
 
-        // POST: Lodgings/Delete/5
+        // POST: ActivityTasks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var lodging = await _context.Lodgings.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Lodgings.Remove(lodging);
+            var activityTask = await _context.ActivityTasks.SingleOrDefaultAsync(m => m.Id == id);
+            _context.ActivityTasks.Remove(activityTask);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Details", "Trips", new { Id = DatabaseManager.TripId });
+            return RedirectToAction("Details", "Trips", new { Id = @DatabaseManager.TripId });
         }
 
-        private bool LodgingExists(int id)
+        private bool ActivityTaskExists(int id)
         {
-            return _context.Lodgings.Any(e => e.Id == id);
+            return _context.ActivityTasks.Any(e => e.Id == id);
         }
     }
 }

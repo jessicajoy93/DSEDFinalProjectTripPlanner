@@ -14,19 +14,23 @@ namespace DSEDFinalProjectTripPlanner.Models
         [Required]
         public string LodgingName { get; set; }
         [Required]
-        public string AddressLine1 { get; set; }
+        public string Address { get; set; }
         [Required]
-        //public string AddressSuburb { get; set; }
+        public string AddressSuburb { get; set; }
+        [Required]
         public string AddressCity { get; set; }
+        [Required]
         public string AddressRegion { get; set; }
         public string AddressPostcode { get; set; }
         [Required]
         public string AddressCountry { get; set; }
         [Required]
         public DateTime ArrivalDate { get; set; }
+        [Required]
         public DateTime ArrivalTime { get; set; }
         [Required]
         public DateTime DepartureDate { get; set; }
+        [Required]
         public DateTime DepartureTime { get; set; }
         public int NumOfGuests { get; set; }
         public int NumOfRooms { get; set; }
