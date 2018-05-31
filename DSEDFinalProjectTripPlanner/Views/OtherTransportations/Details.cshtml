@@ -1,0 +1,118 @@
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model DSEDFinalProjectTripPlanner.DTO.TripDTO
+
+@{
+    ViewData["Title"] = "Details";
+    ViewData["Header"] = "Transportation";
+}
+
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
+<hr />
+
+@*My Other Transportations*@
+<div class="col-md-12">
+    <hr />
+
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="details">
+                <h5>
+                    @DatabaseManager.DepartureDate(Model.MyOtherTransportation.DepartureDate)
+                </h5>
+                <h4>
+                    @Html.DisplayFor(model => model.MyOtherTransportation.TypeOfTransport) to @Html.DisplayFor(model => model.MyOtherTransportation.CarrierName)
+                </h4>
+                <p>
+                    Confirmation Number: @Html.DisplayFor(model => model.MyOtherTransportation.ConfirmationNumber)
+                </p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <p>
+                <span class="bold">Depart</span><br />
+                <span class="large">@DatabaseManager.ArrivalTime(Model.MyOtherTransportation.DepartureTime)</span>
+                @DatabaseManager.DepartureDate(Model.MyOtherTransportation.DepartureDate)<br />
+                @Html.DisplayFor(model => model.MyOtherTransportation.DepartureAddress),
+                @if (Model.MyOtherTransportation.DepartureSuburb != null)
+                {
+                    @Html.DisplayFor(model => model.MyOtherTransportation.DepartureSuburb)<text>,</text>
+                }
+                @if (Model.MyOtherTransportation.DeparturePostcode != null)
+                {
+                    @Html.DisplayFor(model => model.MyOtherTransportation.DeparturePostcode)<text>,</text>
+                    //https://stackoverflow.com/questions/10209973/mixing-text-and-functions-inside-an-if-else-with-mvc-razor
+                }
+                @Html.DisplayFor(model => model.MyOtherTransportation.DepartureCity),
+                @Html.DisplayFor(model => model.MyOtherTransportation.DepartureRegion),
+                @Html.DisplayFor(model => model.MyOtherTransportation.DepartureCountry)
+            </p>
+        </div>
+        <div class="col-md-3">
+            <p>
+                <span class="bold">Arrive</span><br />
+                <span class="checkinout">
+                    @DatabaseManager.ArrivalTime(Model.MyOtherTransportation.ArrivalTime)
+                </span> @DatabaseManager.DepartureDate(Model.MyOtherTransportation.ArrivalDate)<br />
+                @Html.DisplayFor(model => model.MyOtherTransportation.ArrivalAddress),
+                @Html.DisplayFor(model => model.MyOtherTransportation.ArrivalCity),
+                @if (Model.MyOtherTransportation.ArrivalSuburb != null)
+                {
+                    @Html.DisplayFor(model => model.MyOtherTransportation.ArrivalSuburb)<text>,</text>
+                } @if (Model.MyOtherTransportation.ArrivalPostcode != null)
+                {
+                    @Html.DisplayFor(model => model.MyOtherTransportation.ArrivalPostcode)<text>,</text>
+                }
+                @Html.DisplayFor(model => model.MyOtherTransportation.ArrivalRegion),
+                @Html.DisplayFor(model => model.MyOtherTransportation.ArrivalCountry)
+            </p>
+        </div>
+        <div class="passengers">
+            <h4>Passengers</h4>
+
+            @foreach (var human in Model.AllHumans.OrderBy(human => human.TicketNumber).ThenBy(human => human.Id))
+            {
+                @if (human.TripId == DatabaseManager.TripId && human.OtherTransportationId == DatabaseManager.OtherTransportationId)
+                {
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <p>@Html.DisplayFor(modelItem => human.Fullname)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>Frequent Flyer #: @Html.DisplayFor(modelItem => human.FrequentFlyerNumber)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                Seat #: @Html.DisplayFor(modelItem => human.TicketNumber)
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                <a asp-controller="Humans" asp-action="Edit" asp-route-id="@human.Id">Edit</a> |
+                                <a asp-controller="Humans" asp-action="Delete" asp-route-id="@human.Id">Delete</a>
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-area="" asp-controller="Humans" asp-action="Create">Add Passenger</a> |
+    <a asp-area="" asp-controller="Trips" asp-action="Details/@DatabaseManager.TripId">Back to List</a>
+</div>

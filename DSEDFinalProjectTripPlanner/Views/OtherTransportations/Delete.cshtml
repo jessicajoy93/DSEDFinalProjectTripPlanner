@@ -1,0 +1,135 @@
+﻿@model DSEDFinalProjectTripPlanner.Models.OtherTransportation
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OtherTransportation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfTransport)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfTransport)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CarrierName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CarrierName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureSuburb)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureSuburb)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureCity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureCity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureRegion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureRegion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeparturePostcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeparturePostcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureCountry)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureCountry)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartureTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalSuburb)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalSuburb)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalCity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalCity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalRegion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalRegion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalPostcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalPostcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalCountry)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalCountry)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TripId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TripId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -206,17 +206,19 @@ a {
     font-style: italic;
 }
 
+.large {
+    font-weight: bolder;
+    font-size: 20pt;
+    font-style: italic;
+}
+
 .passengers h4 {
     color: #000000;
     text-align: left;
 }
 
-
-
-
-
-.flightOptions {
-    text-align: left;
+.details p {
+    text-align: center;
 }
 
 .lodgingName p {
@@ -243,3 +245,34 @@ a {
         text-align: right;
         vertical-align: middle;
     }
+
+.othertransportations {
+    overflow: hidden;
+    /*background-color: lightblue;*/
+    margin: 0px 10px 0px 10px;
+}
+
+.flights {
+    overflow: hidden;
+    /*background-color: lightcoral;*/
+    margin: 0px 10px 0px 10px;
+}
+
+.lodgings {
+    overflow: hidden;
+    /*background-color: lightpink;*/
+    margin: 0px 10px 0px 10px;
+}
+
+/*.human {
+    display: none;
+}
+
+    .human a {
+    }*/
+
+.image-responsive {
+    width: 80%;
+    height: auto;
+    padding: 10px;
+}

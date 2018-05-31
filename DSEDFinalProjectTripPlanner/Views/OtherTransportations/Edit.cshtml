@@ -1,0 +1,197 @@
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model DSEDFinalProjectTripPlanner.Models.OtherTransportation
+
+@{
+    ViewData["Title"] = "Edit";
+    ViewData["Header"] = "Edit a Transportation";
+}
+
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="TypeOfTransport" class="control-label">Type Of Transport</label>
+                    <select asp-for="TypeOfTransport" asp-items="ViewBag.TypeOfTransportList" class="form-control">
+                        <option>Please select one</option>
+                        <option>Bus</option>
+                        <option>Ferry</option>
+                        <option>Train</option>
+                        <option>Other</option>
+                    </select>
+                    <span asp-validation-for="TypeOfTransport" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="CarrierName" class="control-label">Carrier Name</label>
+                    <input asp-for="CarrierName" class="form-control" />
+                    <span asp-validation-for="CarrierName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ConfirmationNumber" class="control-label">Confirmation Number</label>
+                    <input asp-for="ConfirmationNumber" class="form-control" />
+                    <span asp-validation-for="ConfirmationNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+
+            <div class="col-md-12">
+                <br />
+                <label>Departure</label>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="DepartureDate" class="control-label">Date <span class="required">*</span></label>
+                    <input asp-for="DepartureDate" type="date" class="form-control" />
+                    <span asp-validation-for="DepartureDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="DepartureTime" class="control-label">Time <span class="required">*</span></label>
+                    <input asp-for="DepartureTime" type="time" class="form-control" />
+                    <span asp-validation-for="DepartureTime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DepartureAddress" class="control-label">Address <span class="required">*</span></label>
+                    <input asp-for="DepartureAddress" class="form-control" />
+                    <span asp-validation-for="DepartureAddress" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="DepartureSuburb" class="control-label">Suburb</label>
+                    <input asp-for="DepartureSuburb" class="form-control" />
+                    <span asp-validation-for="DepartureSuburb" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="DeparturePostcode" class="control-label">Postcode</label>
+                    <input asp-for="DeparturePostcode" class="form-control" />
+                    <span asp-validation-for="DeparturePostcode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="DepartureCity" class="control-label">City <span class="required">*</span></label>
+                    <input asp-for="DepartureCity" class="form-control" />
+                    <span asp-validation-for="DepartureCity" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="DepartureRegion" class="control-label">Region</label>
+                    <input asp-for="DepartureRegion" class="form-control" />
+                    <span asp-validation-for="DepartureRegion" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="DepartureCountry" class="control-label">Country <span class="required">*</span></label>
+                    <input asp-for="DepartureCountry" class="form-control" />
+                    <span asp-validation-for="DepartureCountry" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="col-md-12">
+                <br />
+                <label>Arrival</label>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ArrivalDate" class="control-label">Date <span class="required">*</span></label>
+                    <input asp-for="ArrivalDate" type="date" class="form-control" />
+                    <span asp-validation-for="ArrivalDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ArrivalTime" class="control-label">Time <span class="required">*</span></label>
+                    <input asp-for="ArrivalTime" type="time" class="form-control" />
+                    <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ArrivalAddress" class="control-label">Address <span class="required">*</span></label>
+                    <input asp-for="ArrivalAddress" class="form-control" />
+                    <span asp-validation-for="ArrivalAddress" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ArrivalSuburb" class="control-label">Suburb</label>
+                    <input asp-for="ArrivalSuburb" class="form-control" />
+                    <span asp-validation-for="ArrivalSuburb" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ArrivalPostcode" class="control-label">Postcode</label>
+                    <input asp-for="ArrivalPostcode" class="form-control" />
+                    <span asp-validation-for="ArrivalPostcode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ArrivalCity" class="control-label">City <span class="required">*</span></label>
+                    <input asp-for="ArrivalCity" class="form-control" />
+                    <span asp-validation-for="ArrivalCity" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ArrivalRegion" class="control-label">Region</label>
+                    <input asp-for="ArrivalRegion" class="form-control" />
+                    <span asp-validation-for="ArrivalRegion" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ArrivalCountry" class="control-label">Country <span class="required">*</span></label>
+                    <input asp-for="ArrivalCountry" class="form-control" />
+                    <span asp-validation-for="ArrivalCountry" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="TripId" class="control-label"></label>
+                    <input asp-for="TripId" value="@DatabaseManager.TripId" readonly="readonly" class="form-control" />
+                    <span asp-validation-for="TripId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+                <span class="required">* Required</span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

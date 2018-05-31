@@ -75,10 +75,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 {
                     return RedirectToAction("Details", "Lodgings", new { Id = human.LodgingId });
                 }
-                //if (DatabaseManager.OtherTransportationId != 0)
-                //{
-                //    return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
-                //}
+                if (DatabaseManager.OtherTransportationId != 0)
+                {
+                    return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
+                }
                 //if (DatabaseManager.RestaurantId != 0)
                 //{
                 //    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
@@ -151,10 +151,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 {
                     return RedirectToAction("Details", "Lodgings", new { Id = human.LodgingId });
                 }
-                //if (DatabaseManager.OtherTransportationId != 0)
-                //{
-                //    return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
-                //}
+                if (DatabaseManager.OtherTransportationId != 0)
+                {
+                    return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
+                }
                 //if (DatabaseManager.RestaurantId != 0)
                 //{
                 //    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
@@ -198,7 +198,32 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             _context.Travellers.Remove(human);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+
+            if (DatabaseManager.FlightId != 0)
+            {
+                return RedirectToAction("Details", "Flights", new { Id = human.FlightId });
+            }
+            if (DatabaseManager.LodgingId != 0)
+            {
+                return RedirectToAction("Details", "Lodgings", new { Id = human.LodgingId });
+            }
+            if (DatabaseManager.OtherTransportationId != 0)
+            {
+                return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
+            }
+            //if (DatabaseManager.RestaurantId != 0)
+            //{
+            //    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
+            //}
+            //if (DatabaseManager.CarRentalId != 0)
+            //{
+            //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
+            //}
+            //if (DatabaseManager.ActivityTaskId != 0)
+            //{
+            //    return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
+            //}
+            return RedirectToAction("Details", "Trips", new { Id = DatabaseManager.TripId });
         }
 
         private bool HumanExists(int id)

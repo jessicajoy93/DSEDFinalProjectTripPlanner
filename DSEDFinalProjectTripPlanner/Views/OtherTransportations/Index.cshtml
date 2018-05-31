@@ -1,0 +1,93 @@
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model IEnumerable<DSEDFinalProjectTripPlanner.Models.OtherTransportation>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Header"] = "Transportations";
+}
+
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
+<hr />
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model.OrderBy(item => item.DepartureDate).ThenBy(item => item.DepartureTime))
+{
+    //https://dzone.com/articles/how-order-multiple-columns
+
+    @if (item.TripId == DatabaseManager.TripId)
+    {
+        <div class="col-md-12">
+            <hr />
+            <div class="col-md-1">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a><br />
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a><br />
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </div>
+
+            <div class="col-md-11">
+                <div class="col-md-6">
+                    <div class="details">
+                        <h5>
+                            @DatabaseManager.DepartureDate(item.DepartureDate)
+                        </h5>
+                        <h4>
+                            @Html.DisplayFor(modelItem => item.TypeOfTransport) to @Html.DisplayFor(modelItem => item.CarrierName)
+                        </h4>
+                        <p>
+                            Confirmation Number: @Html.DisplayFor(modelItem => item.ConfirmationNumber)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <p>
+                        <span class="bold">Depart</span><br />
+                        <span class="large">@DatabaseManager.ArrivalTime(item.DepartureTime)</span>
+                        @DatabaseManager.DepartureDate(item.DepartureDate)<br />
+                        @Html.DisplayFor(modelItem => item.DepartureAddress),
+                        @if (item.DepartureSuburb != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.DepartureSuburb)<text>,</text>
+                        }
+                        @if (item.DeparturePostcode != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.DeparturePostcode)<text>,</text>
+                            //https://stackoverflow.com/questions/10209973/mixing-text-and-functions-inside-an-if-else-with-mvc-razor
+                        }
+                        @Html.DisplayFor(modelItem => item.DepartureCity),
+                        @Html.DisplayFor(modelItem => item.DepartureRegion),
+                        @Html.DisplayFor(modelItem => item.DepartureCountry)
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <p>
+                        <span class="bold">Arrive</span><br />
+                        <span class="checkinout">
+                            @DatabaseManager.ArrivalTime(item.ArrivalTime)
+                        </span> @DatabaseManager.DepartureDate(item.ArrivalDate)<br />
+                        @Html.DisplayFor(modelItem => item.ArrivalAddress),
+                        @Html.DisplayFor(modelItem => item.ArrivalCity),
+                        @if (item.ArrivalSuburb != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.ArrivalSuburb)<text>,</text>
+                        } @if (item.ArrivalPostcode != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.ArrivalPostcode)<text>,</text>
+                        }
+                        @Html.DisplayFor(modelItem => item.ArrivalRegion),
+                        @Html.DisplayFor(modelItem => item.ArrivalCountry)
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    }
+}
+

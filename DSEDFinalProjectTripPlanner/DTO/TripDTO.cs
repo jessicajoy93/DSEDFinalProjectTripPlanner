@@ -20,6 +20,8 @@ namespace DSEDFinalProjectTripPlanner.DTO
         public List<Human> AllHumans { get; set; }
         public List<DateTime> GetDates { get; set; }
         public List<Lodging> AllLodgings { get; set; }
+        public List<OtherTransportation> AllOtherTransportations { get; set; }
+        public MyOtherTransportations MyOtherTransportation { get; set; }
 
 
 
