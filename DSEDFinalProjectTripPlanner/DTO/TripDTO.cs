@@ -13,15 +13,18 @@ namespace DSEDFinalProjectTripPlanner.DTO
         private readonly Trips _trips = new Trips();
         public int Id { get; set; }
 
-        //public List<Trips> AllTrips { get; set; }
-        public Trips AllTrips { get; set; }
         public List<Flight> AllFlights { get; set; }
-        public MyFlights MyFlight { get; set; }
         public List<Human> AllHumans { get; set; }
         public List<DateTime> GetDates { get; set; }
         public List<Lodging> AllLodgings { get; set; }
         public List<OtherTransportation> AllOtherTransportations { get; set; }
+        public List<Restaurant> AllRestaurants { get; set; }
+
+
+        public Trips AllTrips { get; set; }
+        public MyFlights MyFlight { get; set; }
         public MyOtherTransportations MyOtherTransportation { get; set; }
+        public MyRestaurants MyRestaurant { get; set; }
 
 
 

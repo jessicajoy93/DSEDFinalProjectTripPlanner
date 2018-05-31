@@ -1,131 +1,64 @@
-﻿@model IEnumerable<DSEDFinalProjectTripPlanner.Models.Restaurant>
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model IEnumerable<DSEDFinalProjectTripPlanner.Models.Restaurant>
 
 @{
     ViewData["Title"] = "Index";
+    ViewData["Header"] = "Restaurant Reservations";
 }
 
-<h2>Index</h2>
-
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
+<hr />
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.RestaurantName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Address)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Suburb)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.City)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Region)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Postcode)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Country)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Time)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cuisine)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NumberInParty)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ConfirmationNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.HoursOfOperation)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DressCode)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PriceRange)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TripId)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestaurantName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Suburb)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Region)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Postcode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cuisine)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberInParty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConfirmationNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoursOfOperation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DressCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriceRange)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TripId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+
+@foreach (var restaurant in Model.OrderBy(restaurant => restaurant.Date).ThenBy(restaurant => restaurant.Time))
+{
+    <div class="col-md-12">
+        <hr />
+        <div class="col-md-3">
+            <div class="lodgingName">
+                <h3>
+                    <a asp-action="Details" asp-route-id="@restaurant.Id">
+                        @Html.DisplayFor(modelItem => restaurant.RestaurantName)
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p>
+                @Html.DisplayFor(modelItem => restaurant.Address),
+                @if (restaurant.Suburb != null)
+                {
+                    @Html.DisplayFor(modelItem => restaurant.Suburb)<text>,</text>
+                }
+                @Html.DisplayFor(modelItem => restaurant.City),
+                @if (restaurant.Postcode != null)
+                {
+                    @Html.DisplayFor(modelItem => restaurant.Postcode)<text>,</text>
+                }
+                <br />
+                @Html.DisplayFor(modelItem => restaurant.Region),
+                @Html.DisplayFor(modelItem => restaurant.Country)
+            </p>
+        </div>
+        <div class="col-md-3">
+            <p>
+                <span class="bold">Reservation:</span>
+                @DatabaseManager.StartDate(restaurant.Date) &#64; @* &#64; - symbol for @ *@
+                @DatabaseManager.ArrivalTime(restaurant.Time)<br />
+
+            </p>
+        </div>
+        <div class="col-md-12 detailslinks">
+            <p>
+                <a asp-action="Edit" asp-route-id="@restaurant.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@restaurant.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@restaurant.Id">Delete</a>
+            </p>
+        </div>
+    </div>
 }
-    </tbody>
-</table>
+

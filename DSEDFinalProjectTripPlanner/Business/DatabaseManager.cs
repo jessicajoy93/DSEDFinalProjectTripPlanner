@@ -19,27 +19,13 @@ namespace DSEDFinalProjectTripPlanner.Business
 
         public static int TotalNumDays { get; set; }
         public static int TotalDaysToGo { get; set; }
+        public static int TotalHoursToGo { get; set; }
         public static string Shortdate { get; set; }
         public static string Departure { get; set; }
         public static string Arrival { get; set; }
         public static string Duration { get; set; }
         public static DateTime TripStartDate { get; set; }
         public static int NumOfHumans { get; set; } = 0;
-
-
-
-
-
-
-        public static int addHuman()
-        {
-            return NumOfHumans++;
-        }
-        public static int removeHuman()
-        {
-            return NumOfHumans--;
-        }
-
 
         public static int NumOfDays(DateTime fd, DateTime sd)
         {
@@ -51,6 +37,12 @@ namespace DSEDFinalProjectTripPlanner.Business
         {
             TotalDaysToGo = (int)(sd - now).TotalDays;
             return TotalDaysToGo;
+        }
+
+        public static int NumOfHoursToGo(DateTime sd, DateTime now)
+        {
+            TotalHoursToGo = (int)(sd - now).TotalHours;
+            return TotalHoursToGo;
         }
 
         public static object ShortStartDate(DateTime sd)

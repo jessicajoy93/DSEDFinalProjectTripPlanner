@@ -79,10 +79,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 {
                     return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
                 }
-                //if (DatabaseManager.RestaurantId != 0)
-                //{
-                //    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
-                //}
+                if (DatabaseManager.RestaurantId != 0)
+                {
+                    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
+                }
                 //if (DatabaseManager.CarRentalId != 0)
                 //{
                 //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
@@ -155,10 +155,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 {
                     return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
                 }
-                //if (DatabaseManager.RestaurantId != 0)
-                //{
-                //    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
-                //}
+                if (DatabaseManager.RestaurantId != 0)
+                {
+                    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
+                }
                 //if (DatabaseManager.CarRentalId != 0)
                 //{
                 //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
@@ -211,10 +211,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 return RedirectToAction("Details", "OtherTransportations", new { Id = human.OtherTransportationId });
             }
-            //if (DatabaseManager.RestaurantId != 0)
-            //{
-            //    return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
-            //}
+            if (DatabaseManager.RestaurantId != 0)
+            {
+                return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
+            }
             //if (DatabaseManager.CarRentalId != 0)
             //{
             //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });

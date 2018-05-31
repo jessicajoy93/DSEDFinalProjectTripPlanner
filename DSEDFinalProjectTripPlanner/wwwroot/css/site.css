@@ -29,12 +29,18 @@
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
     color: #E2B44E;
+    margin: 5px;
 }
 
 
 p, label, table, dt, dd {
     color: #000000;
     text-align: left;
+    margin: 5px;
+}
+
+hr {
+    margin: 5px;
 }
 
 a {
@@ -191,14 +197,19 @@ a {
 }
 
 
-/* Flights */
-.details h4, h5, p {
+
+.details h3, h4, h5, p {
     text-align: left;
     color: #000000;
 }
 
 .links p {
     text-align: center;
+}
+
+.detailslinks p {
+    text-align: right;
+    margin-right: 10px;
 }
 
 .bold {

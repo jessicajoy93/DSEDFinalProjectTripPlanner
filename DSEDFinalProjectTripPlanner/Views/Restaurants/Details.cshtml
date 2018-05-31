@@ -1,120 +1,91 @@
-﻿@model DSEDFinalProjectTripPlanner.Models.Restaurant
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model DSEDFinalProjectTripPlanner.DTO.TripDTO
 
 @{
     ViewData["Title"] = "Details";
+    ViewData["Header"] = "Restaurant Reservation";
 }
 
-<h2>Details</h2>
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
+<hr />
 
 <div>
-    <h4>Restaurant</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.RestaurantName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RestaurantName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Suburb)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Suburb)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Region)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Region)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Postcode)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Postcode)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Time)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Cuisine)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Cuisine)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberInParty)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumberInParty)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ConfirmationNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ConfirmationNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.HoursOfOperation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.HoursOfOperation)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DressCode)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DressCode)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PriceRange)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PriceRange)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TripId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TripId)
-        </dd>
-    </dl>
+    <div class="col-md-12">
+        <div class="col-md-3">
+            <div class="details">
+                <h3>
+                    @Html.DisplayFor(model => model.MyRestaurant.RestaurantName)
+                </h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p>
+                @Html.DisplayFor(model => model.MyRestaurant.Address),
+                @if (Model.MyRestaurant.Suburb != null)
+                {
+                    @Html.DisplayFor(model => model.MyRestaurant.Suburb)<text>,</text>
+                }
+                @Html.DisplayFor(model => model.MyRestaurant.City),
+                @if (Model.MyRestaurant.Postcode != null)
+                {
+                    @Html.DisplayFor(model => model.MyRestaurant.Postcode)<text>,</text>
+                }
+                <br />
+                @Html.DisplayFor(model => model.MyRestaurant.Region),
+                @Html.DisplayFor(model => model.MyRestaurant.Country)
+            </p>
+        </div>
+        <div class="col-md-3">
+            <p>
+                <span class="bold">Reservation:</span>
+                @DatabaseManager.StartDate(Model.MyRestaurant.Date) &#64; @* &#64; - symbol for @ *@
+                @DatabaseManager.ArrivalTime(Model.MyRestaurant.Time)<br />
+                Confirmation #: @Html.DisplayFor(model => model.MyRestaurant.ConfirmationNumber)
+            </p>
+        </div>
+        <div class="col-md-2">
+            <p>
+                @if (Model.MyRestaurant.NumberInParty > 0)
+                {
+                    <span class="bold"># in party:</span>
+                    @Html.DisplayFor(model => model.MyRestaurant.NumberInParty)<text><br /></text>
+                }
+                @if (Model.MyRestaurant.HoursOfOperation != null)
+                {
+                    <span class="bold">Hours of operation:</span>
+                    @Html.DisplayFor(model => model.MyRestaurant.HoursOfOperation)<br />
+                }
+                @if (Model.MyRestaurant.PriceRange != null)
+                {
+                    <span class="bold">Price Range:</span>
+                    @Html.DisplayFor(model => model.MyRestaurant.PriceRange)<br />
+                }
+                @if (Model.MyRestaurant.DressCode != null)
+                {
+                    <span class="bold">Dress code:</span>
+                    @Html.DisplayFor(model => model.MyRestaurant.DressCode)<br />
+                }
+                @if (Model.MyRestaurant.Cuisine != null)
+                {
+                    <span class="bold">Cuisine:</span>
+                    @Html.DisplayFor(model => model.MyRestaurant.Cuisine)<br />
+                }
+
+            </p>
+        </div>
+        @if (Model.MyRestaurant.Description != null)
+        {
+            <div class="col-md-12">
+                @Html.DisplayFor(model => model.MyRestaurant.Description)
+            </div>
+        }
+    </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.MyRestaurant.Id">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model.MyRestaurant.Id">Delete</a> |
+    <a asp-area="" asp-controller="Humans" asp-action="Create">Add Guest</a> |
+    <a asp-area="" asp-controller="Trips" asp-action="Details/@DatabaseManager.TripId">Back to List</a>
 </div>

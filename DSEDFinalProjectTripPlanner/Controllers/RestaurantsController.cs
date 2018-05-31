@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DSEDFinalProjectTripPlanner.Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DSEDFinalProjectTripPlanner.Data;
+using DSEDFinalProjectTripPlanner.DTO;
 using DSEDFinalProjectTripPlanner.Models;
 
 namespace DSEDFinalProjectTripPlanner.Controllers
@@ -35,12 +37,46 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             var restaurant = await _context.Restaurants
                 .SingleOrDefaultAsync(m => m.Id == id);
+
+            TripDTO _tfDto = new TripDTO();
+            MyRestaurants _restaurant = new MyRestaurants();
+
+            DatabaseManager.FlightId = 0;
+            DatabaseManager.LodgingId = 0;
+            DatabaseManager.OtherTransportationId = 0;
+            DatabaseManager.RestaurantId = (int)id;
+            DatabaseManager.CarRentalId = 0;
+            DatabaseManager.ActivityTaskId = 0;
+
+            _restaurant.Id = DatabaseManager.RestaurantId;
+            _restaurant.RestaurantName = restaurant.RestaurantName;
+            _restaurant.Address = restaurant.Address;
+            _restaurant.Suburb = restaurant.Suburb;
+            _restaurant.City = restaurant.City;
+            _restaurant.Region = restaurant.Region;
+            _restaurant.Postcode = restaurant.Postcode;
+            _restaurant.Country = restaurant.Country;
+            _restaurant.Description = restaurant.Description;
+            _restaurant.Date = restaurant.Date;
+            _restaurant.Time = restaurant.Time;
+            _restaurant.Cuisine = restaurant.Cuisine;
+            _restaurant.NumberInParty = restaurant.NumberInParty;
+            _restaurant.ConfirmationNumber = restaurant.ConfirmationNumber;
+            _restaurant.HoursOfOperation = restaurant.HoursOfOperation;
+            _restaurant.DressCode = restaurant.DressCode;
+            _restaurant.PriceRange = restaurant.PriceRange;
+            _restaurant.TripId = restaurant.TripId;
+
+            _tfDto.AllHumans = _context.Humans.ToList();
+
             if (restaurant == null)
             {
                 return NotFound();
             }
 
-            return View(restaurant);
+            _tfDto.MyRestaurant = _restaurant;
+
+            return View(_tfDto);
         }
 
         // GET: Restaurants/Create
@@ -60,7 +96,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 _context.Add(restaurant);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { restaurant.Id });
             }
             return View(restaurant);
         }
@@ -111,7 +147,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { restaurant.Id });
             }
             return View(restaurant);
         }
@@ -142,7 +178,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             var restaurant = await _context.Restaurants.SingleOrDefaultAsync(m => m.Id == id);
             _context.Restaurants.Remove(restaurant);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", new { Id = DatabaseManager.TripId });
         }
 
         private bool RestaurantExists(int id)
