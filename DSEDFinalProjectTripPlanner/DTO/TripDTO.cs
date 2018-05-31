@@ -19,12 +19,14 @@ namespace DSEDFinalProjectTripPlanner.DTO
         public List<Lodging> AllLodgings { get; set; }
         public List<OtherTransportation> AllOtherTransportations { get; set; }
         public List<Restaurant> AllRestaurants { get; set; }
+        public List<ActivityTask> AllActivities { get; set; }
 
 
         public Trips AllTrips { get; set; }
         public MyFlights MyFlight { get; set; }
         public MyOtherTransportations MyOtherTransportation { get; set; }
         public MyRestaurants MyRestaurant { get; set; }
+        public MyActivities MyActivity { get; set; }
 
 
 

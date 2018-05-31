@@ -56,7 +56,7 @@
                 <h4>Activites</h4>
                 <a asp-area="" asp-controller="Lodgings" asp-action="Create">Lodging</a><br />
                 <a asp-area="" asp-controller="Restaurants" asp-action="Create">Restaurant</a><br />
-                <a>Activity</a>
+                <a asp-area="" asp-controller="ActivityTasks" asp-action="Create">Activity</a>
             </div>
             <div class="clear"></div>
         </div>
@@ -251,7 +251,8 @@
                                                 <p>
                                                     <span class="bold">Check-in</span><br />
                                                     <span class="checkinout">@DatabaseManager.ArrivalTime(lodging.ArrivalTime)</span><br />
-                                                    @Html.DisplayFor(modelItem => lodging.AddressLine1),
+                                                    @Html.DisplayFor(modelItem => lodging.Address),
+                                                    @Html.DisplayFor(modelItem => lodging.AddressSuburb),
                                                     @Html.DisplayFor(modelItem => lodging.AddressCity),
                                                     @Html.DisplayFor(modelItem => lodging.AddressPostcode), <br />
                                                     @Html.DisplayFor(modelItem => lodging.AddressRegion),
@@ -318,9 +319,9 @@
                                     <div class="links">
                                         <p>
                                             <img class="image-responsive" src="~/images/resort.png" />
-                                            <a asp-controller="Flights" asp-action="Edit" asp-route-id="@lodging.Id">Edit</a><br />
-                                            <a asp-controller="Flights" asp-action="Details" asp-route-id="@lodging.Id">Details</a><br />
-                                            <a asp-controller="Flights" asp-action="Delete" asp-route-id="@lodging.Id">Delete</a><br />
+                                            <a asp-controller="Lodgings" asp-action="Edit" asp-route-id="@lodging.Id">Edit</a><br />
+                                            <a asp-controller="Lodgings" asp-action="Details" asp-route-id="@lodging.Id">Details</a><br />
+                                            <a asp-controller="Lodgings" asp-action="Delete" asp-route-id="@lodging.Id">Delete</a><br />
                                         </p>
                                     </div>
                                 </div>
@@ -354,7 +355,8 @@
                                                     <span class="checkinout">
                                                         @DatabaseManager.ArrivalTime(lodging.DepartureTime)
                                                     </span><br />
-                                                    @Html.DisplayFor(modelItem => lodging.AddressLine1),
+                                                    @Html.DisplayFor(modelItem => lodging.Address),
+                                                    @Html.DisplayFor(modelItem => lodging.AddressSuburb),
                                                     @Html.DisplayFor(modelItem => lodging.AddressCity),
                                                     @Html.DisplayFor(modelItem => lodging.AddressPostcode), <br />
                                                     @Html.DisplayFor(modelItem => lodging.AddressRegion),
@@ -647,6 +649,117 @@
                                                 }
 
                                             }*@
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+
+
+                            </div>
+
+                        }
+                    }
+                </div>
+            }
+
+            @*My Restaurants*@@**@
+            @foreach (var activity in Model.AllActivities.OrderBy(activity => activity.StartDate).ThenBy(activity => activity.StartTime))
+            {
+                <div class="othertransportations">
+                    @if (activity.StartDate == date.Date)
+                    {
+                        @if (activity.TripId == DatabaseManager.TripId)
+                        {
+                            <div class="col-md-12">
+                                <div class="col-md-1">
+                                    <div class="links">
+                                        <p>
+                                            <img class="image-responsive" src="~/images/trekking.png" />
+                                            <a asp-controller="Activities" asp-action="Edit" asp-route-id="@activity.Id">Edit</a><br />
+                                            <a asp-controller="Activities" asp-action="Details" asp-route-id="@activity.Id">Details</a><br />
+                                            <a asp-controller="Activities" asp-action="Delete" asp-route-id="@activity.Id">Delete</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="col-md-12">
+                                        <div class="details">
+                                            <h5>
+                                                @DatabaseManager.DepartureDate(activity.StartDate)
+                                            </h5>
+                                            <h4>
+                                                @Html.DisplayFor(modelItem => activity.TypeOfActivity) with @Html.DisplayFor(modelItem => activity.SupplierName)
+                                            </h4>
+                                            <p>
+                                                Confirmation #: @Html.DisplayFor(modelItem => activity.ConfirmationNumber)
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span class="bold">Start</span><br />
+                                                <span class="large">@DatabaseManager.ArrivalTime(activity.StartTime)</span> <br />
+                                                @Html.DisplayFor(modelItem => activity.Address),
+                                                @if (activity.Suburb != null)
+                                                {
+                                                    @Html.DisplayFor(modelItem => activity.Suburb)
+                                                    <text>,</text>
+                                                }
+                                                @if (activity.Postcode != null)
+                                                {
+                                                    @Html.DisplayFor(modelItem => activity.Postcode)
+                                                    <text>,</text>
+                                                }
+                                                @Html.DisplayFor(modelItem => activity.Region),
+                                                @Html.DisplayFor(modelItem => activity.City),
+                                                @Html.DisplayFor(modelItem => activity.Country)
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span class="bold">End</span><br />
+                                                <span class="large">@DatabaseManager.ArrivalTime(activity.EndTime)</span>
+                                                @if (activity.StartDate != activity.EndDate)
+                                                {
+                                                    @DatabaseManager.StartDate(activity.EndDate)
+                                                }
+                                            </p>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="passengers">
+                                        <h4>Attendees</h4>
+
+                                        @foreach (var human in Model.AllHumans.OrderBy(human => human.TicketNumber).ThenBy(human => human.Id))
+                                        {
+                                            @if (human.TripId == DatabaseManager.TripId && human.RestaurantId == activity.Id)
+                                            {
+                                                <div class="col-md-12">
+                                                    <div class="col-md-3">
+                                                        <p>@Html.DisplayFor(modelItem => human.Fullname)</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p>Frequent Flyer #: @Html.DisplayFor(modelItem => human.FrequentFlyerNumber)</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p>
+                                                            Seat #: @Html.DisplayFor(modelItem => human.TicketNumber)
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p>
+                                                            <a asp-controller="Humans" asp-action="Edit" asp-route-id="@human.Id">Edit</a> |
+                                                            <a asp-controller="Humans" asp-action="Delete" asp-route-id="@human.Id">Delete</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        }
                                     </div>
                                 </div>
 

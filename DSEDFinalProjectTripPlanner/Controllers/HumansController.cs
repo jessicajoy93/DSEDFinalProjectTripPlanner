@@ -87,10 +87,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 //{
                 //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
                 //}
-                //if (DatabaseManager.ActivityTaskId != 0)
-                //{
-                //    return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
-                //}
+                if (DatabaseManager.ActivityTaskId != 0)
+                {
+                    return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
+                }
 
 
             }
@@ -163,10 +163,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 //{
                 //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
                 //}
-                //if (DatabaseManager.ActivityTaskId != 0)
-                //{
-                //    return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
-                //}
+                if (DatabaseManager.ActivityTaskId != 0)
+                {
+                    return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
+                }
             }
             return View(human);
         }
@@ -220,9 +220,9 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
             //}
             //if (DatabaseManager.ActivityTaskId != 0)
-            //{
-            //    return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
-            //}
+            {
+                return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
+            }
             return RedirectToAction("Details", "Trips", new { Id = DatabaseManager.TripId });
         }
 

@@ -60,6 +60,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             _tfDto.AllHumans = _context.Humans.ToList();
             _tfDto.AllOtherTransportations = _context.OtherTransportations.ToList();
             _tfDto.AllRestaurants = _context.Restaurants.ToList();
+            _tfDto.AllActivities = _context.ActivityTasks.ToList();
 
             var start = trip.StartDate;
             var end = trip.FinishDate;

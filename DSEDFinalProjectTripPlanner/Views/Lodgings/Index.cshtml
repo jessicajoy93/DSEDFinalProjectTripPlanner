@@ -28,7 +28,8 @@
             </div>
             <div class="col-md-4">
                 <p>
-                    @Html.DisplayFor(modelItem => lodging.AddressLine1),
+                    @Html.DisplayFor(modelItem => lodging.Address),
+                    @Html.DisplayFor(modelItem => lodging.AddressSuburb),
                     @Html.DisplayFor(modelItem => lodging.AddressCity),
                     @Html.DisplayFor(modelItem => lodging.AddressPostcode),<br />
                     @Html.DisplayFor(modelItem => lodging.AddressRegion),

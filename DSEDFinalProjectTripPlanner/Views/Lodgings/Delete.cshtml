@@ -24,16 +24,16 @@
             @Html.DisplayFor(model => model.LodgingName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.AddressLine1)
+            @Html.DisplayNameFor(model => model.Address)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.AddressLine1)
+            @Html.DisplayFor(model => model.Address)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.AddressLine2)
+            @Html.DisplayNameFor(model => model.AddressSuburb)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.AddressLine2)
+            @Html.DisplayFor(model => model.AddressSuburb)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.AddressCity)
@@ -108,7 +108,7 @@
             @Html.DisplayFor(model => model.TripId)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-default" /> |

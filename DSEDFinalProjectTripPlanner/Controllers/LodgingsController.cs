@@ -63,7 +63,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ConfirmationNumber,LodgingName,Address,Suburb,City,Region,Postcode,Country,ArrivalDate,ArrivalTime,DepartureDate,DepartureTime,NumOfGuests,NumOfRooms,RoomDescription,TripId")] Lodging lodging)
+        public async Task<IActionResult> Create([Bind("Id,ConfirmationNumber,LodgingName,Address,AddressSuburb,AddressCity,AddressRegion,AddressPostcode,AddressCountry,ArrivalDate,ArrivalTime,DepartureDate,DepartureTime,NumOfGuests,NumOfRooms,RoomDescription,TripId")] Lodging lodging)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace DSEDFinalProjectTripPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ConfirmationNumber,LodgingName,Address,Suburb,City,Region,Postcode,Country,ArrivalDate,ArrivalTime,DepartureDate,DepartureTime,NumOfGuests,NumOfRooms,RoomDescription,TripId")] Lodging lodging)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ConfirmationNumber,LodgingName,Address,AddressSuburb,AddressCity,AddressRegion,AddressPostcode,AddressCountry,ArrivalDate,ArrivalTime,DepartureDate,DepartureTime,NumOfGuests,NumOfRooms,RoomDescription,TripId")] Lodging lodging)
         {
             if (id != lodging.Id)
             {

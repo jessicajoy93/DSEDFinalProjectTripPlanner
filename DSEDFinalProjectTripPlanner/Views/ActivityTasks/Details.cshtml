@@ -1,4 +1,4 @@
-﻿@model DSEDFinalProjectTripPlanner.Models.ActivityTask
+﻿@model DSEDFinalProjectTripPlanner.DTO.TripDTO
 
 @{
     ViewData["Title"] = "Details";
@@ -11,104 +11,104 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TypeOfActivity)
+            @Html.DisplayNameFor(model => model.MyActivity.TypeOfActivity)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.TypeOfActivity)
+            @Html.DisplayFor(model => model.MyActivity.TypeOfActivity)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ConfirmationNumber)
+            @Html.DisplayNameFor(model => model.MyActivity.ConfirmationNumber)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ConfirmationNumber)
+            @Html.DisplayFor(model => model.MyActivity.ConfirmationNumber)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.SupplierName)
+            @Html.DisplayNameFor(model => model.MyActivity.SupplierName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.SupplierName)
+            @Html.DisplayFor(model => model.MyActivity.SupplierName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.MyActivity.Description)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.MyActivity.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayNameFor(model => model.MyActivity.StartDate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.StartDate)
+            @Html.DisplayFor(model => model.MyActivity.StartDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
+            @Html.DisplayNameFor(model => model.MyActivity.StartTime)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.StartTime)
+            @Html.DisplayFor(model => model.MyActivity.StartTime)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
+            @Html.DisplayNameFor(model => model.MyActivity.EndDate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.EndDate)
+            @Html.DisplayFor(model => model.MyActivity.EndDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.EndTime)
+            @Html.DisplayNameFor(model => model.MyActivity.EndTime)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.EndTime)
+            @Html.DisplayFor(model => model.MyActivity.EndTime)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.MyActivity.Address)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Address)
+            @Html.DisplayFor(model => model.MyActivity.Address)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Suburb)
+            @Html.DisplayNameFor(model => model.MyActivity.Suburb)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Suburb)
+            @Html.DisplayFor(model => model.MyActivity.Suburb)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.MyActivity.City)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.City)
+            @Html.DisplayFor(model => model.MyActivity.City)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Region)
+            @Html.DisplayNameFor(model => model.MyActivity.Region)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Region)
+            @Html.DisplayFor(model => model.MyActivity.Region)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Postcode)
+            @Html.DisplayNameFor(model => model.MyActivity.Postcode)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Postcode)
+            @Html.DisplayFor(model => model.MyActivity.Postcode)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Country)
+            @Html.DisplayNameFor(model => model.MyActivity.Country)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Country)
+            @Html.DisplayFor(model => model.MyActivity.Country)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.NumOfPeopleAttending)
+            @Html.DisplayNameFor(model => model.MyActivity.NumOfPeopleAttending)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.NumOfPeopleAttending)
+            @Html.DisplayFor(model => model.MyActivity.NumOfPeopleAttending)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TripId)
+            @Html.DisplayNameFor(model => model.MyActivity.TripId)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.TripId)
+            @Html.DisplayFor(model => model.MyActivity.TripId)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.MyActivity.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

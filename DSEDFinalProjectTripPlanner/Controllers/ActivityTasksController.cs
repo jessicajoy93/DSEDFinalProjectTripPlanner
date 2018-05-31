@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DSEDFinalProjectTripPlanner.Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DSEDFinalProjectTripPlanner.Data;
+using DSEDFinalProjectTripPlanner.DTO;
 using DSEDFinalProjectTripPlanner.Models;
-using DSEDFinalProjectTripPlanner.Business;
 
 namespace DSEDFinalProjectTripPlanner.Controllers
 {
@@ -36,12 +37,45 @@ namespace DSEDFinalProjectTripPlanner.Controllers
 
             var activityTask = await _context.ActivityTasks
                 .SingleOrDefaultAsync(m => m.Id == id);
+
+            TripDTO _tfDto = new TripDTO();
+            MyActivities _activity = new MyActivities();
+
+            DatabaseManager.FlightId = 0;
+            DatabaseManager.LodgingId = 0;
+            DatabaseManager.OtherTransportationId = 0;
+            DatabaseManager.RestaurantId = 0;
+            DatabaseManager.CarRentalId = 0;
+            DatabaseManager.ActivityTaskId = (int)id;
+
+            _activity.Id = DatabaseManager.ActivityTaskId;
+            _activity.TypeOfActivity = activityTask.TypeOfActivity;
+            _activity.ConfirmationNumber = activityTask.ConfirmationNumber;
+            _activity.SupplierName = activityTask.SupplierName;
+            _activity.Description = activityTask.Description;
+            _activity.StartDate = activityTask.StartDate;
+            _activity.StartTime = activityTask.StartTime;
+            _activity.EndDate = activityTask.EndDate;
+            _activity.EndTime = activityTask.EndTime;
+            _activity.Address = activityTask.Address;
+            _activity.Suburb = activityTask.Suburb;
+            _activity.City = activityTask.City;
+            _activity.Region = activityTask.Region;
+            _activity.Postcode = activityTask.Postcode;
+            _activity.Country = activityTask.Country;
+            _activity.NumOfPeopleAttending = activityTask.NumOfPeopleAttending;
+            _activity.TripId = activityTask.TripId;
+
+            _tfDto.AllHumans = _context.Humans.ToList();
+
             if (activityTask == null)
             {
                 return NotFound();
             }
 
-            return View(activityTask);
+            _tfDto.MyActivity = _activity;
+
+            return View(_tfDto);
         }
 
         // GET: ActivityTasks/Create
