@@ -1,0 +1,155 @@
+﻿@model IEnumerable<DSEDFinalProjectTripPlanner.Models.CarRental>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SuppplierName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConfirmationNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupSuburb)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupCity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupRegion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupPostcode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupCountry)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DropoffAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DropoffSuburb)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DropoffCity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DropoffRegion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DropoffPostcode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DropoffCountry)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DropoffDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DropoffTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SupplierPhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TripId)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuppplierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmationNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupSuburb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupRegion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupPostcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffSuburb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffRegion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffPostcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropoffTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierPhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

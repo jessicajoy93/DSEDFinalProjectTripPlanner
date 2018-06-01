@@ -83,10 +83,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 {
                     return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
                 }
-                //if (DatabaseManager.CarRentalId != 0)
-                //{
-                //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
-                //}
+                if (DatabaseManager.CarRentalId != 0)
+                {
+                    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
+                }
                 if (DatabaseManager.ActivityTaskId != 0)
                 {
                     return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
@@ -159,10 +159,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 {
                     return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
                 }
-                //if (DatabaseManager.CarRentalId != 0)
-                //{
-                //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
-                //}
+                if (DatabaseManager.CarRentalId != 0)
+                {
+                    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
+                }
                 if (DatabaseManager.ActivityTaskId != 0)
                 {
                     return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
@@ -215,11 +215,11 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 return RedirectToAction("Details", "Restaurants", new { Id = human.RestaurantId });
             }
-            //if (DatabaseManager.CarRentalId != 0)
-            //{
-            //    return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
-            //}
-            //if (DatabaseManager.ActivityTaskId != 0)
+            if (DatabaseManager.CarRentalId != 0)
+            {
+                return RedirectToAction("Details", "CarRentals", new { Id = human.CarRentalId });
+            }
+            if (DatabaseManager.ActivityTaskId != 0)
             {
                 return RedirectToAction("Details", "ActivityTasks", new { Id = human.ActivityTaskId });
             }

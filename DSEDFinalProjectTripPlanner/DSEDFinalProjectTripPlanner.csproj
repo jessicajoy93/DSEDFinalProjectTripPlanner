@@ -46,6 +46,10 @@
     <Compile Remove="Migrations\20180530002507_otconfirmationnum.Designer.cs" />
     <Compile Remove="Migrations\20180531204215_activitytask.cs" />
     <Compile Remove="Migrations\20180531204215_activitytask.Designer.cs" />
+    <Compile Remove="Migrations\20180531204748_trip.cs" />
+    <Compile Remove="Migrations\20180531204748_trip.Designer.cs" />
+    <Compile Remove="Migrations\20180601000727_checkbox.cs" />
+    <Compile Remove="Migrations\20180601000727_checkbox.Designer.cs" />
   </ItemGroup>
 
 

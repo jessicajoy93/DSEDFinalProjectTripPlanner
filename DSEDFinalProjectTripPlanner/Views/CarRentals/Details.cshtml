@@ -1,0 +1,103 @@
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model DSEDFinalProjectTripPlanner.DTO.TripDTO
+
+@{
+    ViewData["Title"] = "Details";
+    ViewData["Header"] = "Car Rental";
+}
+
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
+<hr />
+<div class="col-md-12">
+    <div class="carRentals">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <div class="details">
+                    <h5>
+                        @DatabaseManager.DepartureDate(Model.MyCarRental.PickupDate)
+                    </h5>
+                    <h4>
+                        @Html.DisplayFor(model => model.MyCarRental.SuppplierName) Car Rental
+                    </h4>
+                    <p>
+                        Confirmation Number: @Html.DisplayFor(model => model.MyCarRental.ConfirmationNumber)
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <p>
+                        <span class="bold">Pick-up</span><br />
+                        <span class="checkinout">@DatabaseManager.ArrivalTime(Model.MyCarRental.PickupTime)</span>
+                        @DatabaseManager.DepartureDate(Model.MyCarRental.PickupDate)<br />
+                        @Html.DisplayFor(model => model.MyCarRental.PickupAddress),
+                        @if (Model.MyCarRental.PickupSuburb != null)
+                        {
+                            @Html.DisplayFor(model => model.MyCarRental.PickupSuburb)
+                            <Text>,</Text>
+                        }
+                        @Html.DisplayFor(model => model.MyCarRental.PickupCity),
+                        @if (Model.MyCarRental.PickupPostcode != null)
+                        {
+                            @Html.DisplayFor(model => model.MyCarRental.PickupPostcode)
+                            <Text>,</Text>
+                        }<br />
+                        @Html.DisplayFor(model => model.MyCarRental.PickupRegion),
+                        @Html.DisplayFor(model => model.MyCarRental.PickupCountry)
+                    </p>
+                </div>
+
+                <div class="col-md-6">
+                    <p>
+                        <span class="bold">Drop-off</span><br />
+                        <span class="checkinout">
+                            @DatabaseManager.ArrivalTime(Model.MyCarRental.DropoffTime)
+                        </span>
+                        @DatabaseManager.DepartureDate(Model.MyCarRental.DropoffDate)
+                        (@DatabaseManager.NumOfDays(Model.MyCarRental.DropoffDate, Model.MyCarRental.PickupDate) Days)<br />
+                        @if (Model.MyCarRental.DropoffCheckbox == true)
+                        {
+                            @Html.DisplayFor(model => model.MyCarRental.PickupAddress)<Text>, </Text>
+                            if (Model.MyCarRental.PickupSuburb != null)
+                            {
+                                @Html.DisplayFor(model => model.MyCarRental.PickupSuburb)<Text>, </Text>
+                            }
+                            @Html.DisplayFor(model => model.MyCarRental.PickupCity)<Text>, </Text>
+                            if (Model.MyCarRental.PickupPostcode != null)
+                            {
+                                @Html.DisplayFor(model => model.MyCarRental.PickupPostcode)<Text>, </Text>
+                            }
+                            <br />
+                            @Html.DisplayFor(model => model.MyCarRental.PickupRegion)<Text>, </Text>
+                            @Html.DisplayFor(model => model.MyCarRental.PickupCountry)
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(model => model.MyCarRental.DropoffAddress)<Text>, </Text>
+                            if (Model.MyCarRental.DropoffSuburb != null)
+                            {
+                                @Html.DisplayFor(model => model.MyCarRental.DropoffSuburb)<Text>, </Text>
+                            }
+                            @Html.DisplayFor(model => model.MyCarRental.DropoffCity)<Text>, </Text>
+                            if (Model.MyCarRental.DropoffPostcode != null)
+                            {
+                                @Html.DisplayFor(model => model.MyCarRental.DropoffPostcode)<Text>, </Text>
+                            }<br />
+                            @Html.DisplayFor(model => model.MyCarRental.DropoffRegion)<Text>, </Text>
+                            @Html.DisplayFor(model => model.MyCarRental.DropoffCountry)
+                        }
+                    </p>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MyCarRental.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

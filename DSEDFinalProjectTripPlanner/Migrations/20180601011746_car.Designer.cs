@@ -11,8 +11,8 @@ using System;
 namespace DSEDFinalProjectTripPlanner.Migrations
 {
     [DbContext(typeof(TripContext))]
-    [Migration("20180531204748_trip")]
-    partial class trip
+    [Migration("20180601011746_car")]
+    partial class car
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,7 +74,11 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.Property<string>("ConfirmationNumber");
 
+                    b.Property<int>("Door");
+
                     b.Property<string>("DropoffAddress");
+
+                    b.Property<bool>("DropoffCheckbox");
 
                     b.Property<string>("DropoffCity");
 
@@ -89,6 +93,10 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.Property<string>("DropoffSuburb");
 
                     b.Property<DateTime>("DropoffTime");
+
+                    b.Property<int>("LargeBag");
+
+                    b.Property<int>("Litres");
 
                     b.Property<string>("PickupAddress")
                         .IsRequired();
@@ -113,9 +121,16 @@ namespace DSEDFinalProjectTripPlanner.Migrations
 
                     b.Property<DateTime>("PickupTime");
 
+                    b.Property<int>("Seats");
+
+                    b.Property<int>("SmallBag");
+
                     b.Property<string>("SupplierPhoneNumber");
 
-                    b.Property<string>("SuppplierName");
+                    b.Property<string>("SuppplierName")
+                        .IsRequired();
+
+                    b.Property<string>("Transmission");
 
                     b.Property<int>("TripId");
 

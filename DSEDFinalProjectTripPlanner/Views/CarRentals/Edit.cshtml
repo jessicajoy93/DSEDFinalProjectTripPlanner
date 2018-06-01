@@ -1,0 +1,273 @@
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model DSEDFinalProjectTripPlanner.Models.CarRental
+
+@{
+    ViewData["Title"] = "Edit";
+    ViewData["Header"] = "Edit Car Rental";
+}
+
+<div class="header">
+    <h1>@ViewData["Header"]</h1>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <label>Supplier</label>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="SuppplierName" class="control-label">Name <span class="required">*</span></label>
+                        <input asp-for="SuppplierName" class="form-control" />
+                        <span asp-validation-for="SuppplierName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="SupplierPhoneNumber" class="control-label">Phone Number</label>
+                        <input asp-for="SupplierPhoneNumber" class="form-control" />
+                        <span asp-validation-for="SupplierPhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConfirmationNumber" class="control-label">Confirmation #</label>
+                        <input asp-for="ConfirmationNumber" class="form-control" />
+                        <span asp-validation-for="ConfirmationNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <label>Pick-up</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PickupAddress" class="control-label">Address <span class="required">*</span></label>
+                        <input asp-for="PickupAddress" class="form-control" />
+                        <span asp-validation-for="PickupAddress" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="PickupSuburb" class="control-label">Suburb</label>
+                        <input asp-for="PickupSuburb" class="form-control" />
+                        <span asp-validation-for="PickupSuburb" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="PickupCity" class="control-label">City <span class="required">*</span></label>
+                        <input asp-for="PickupCity" class="form-control" />
+                        <span asp-validation-for="PickupCity" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PickupRegion" class="control-label">Region <span class="required">*</span></label>
+                        <input asp-for="PickupRegion" class="form-control" />
+                        <span asp-validation-for="PickupRegion" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PickupPostcode" class="control-label">Postcode</label>
+                        <input asp-for="PickupPostcode" class="form-control" />
+                        <span asp-validation-for="PickupPostcode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PickupCountry" class="control-label">Country <span class="required">*</span></label>
+                        <input asp-for="PickupCountry" class="form-control" />
+                        <span asp-validation-for="PickupCountry" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PickupDate" class="control-label">Date <span class="required">*</span></label>
+                        <input asp-for="PickupDate" type="date" class="form-control" />
+                        <span asp-validation-for="PickupDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PickupTime" class="control-label">Time <span class="required">*</span></label>
+                        <input asp-for="PickupTime" type="time" class="form-control" />
+                        <span asp-validation-for="PickupTime" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <label>Drop-off</label>
+                </div>
+
+                <div id="dropoffaddress">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="DropoffAddress" class="control-label">Address</label>
+                            <input asp-for="DropoffAddress" class="form-control" />
+                            <span asp-validation-for="DropoffAddress" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="DropoffSuburb" class="control-label">Suburb</label>
+                            <input asp-for="DropoffSuburb" class="form-control" />
+                            <span asp-validation-for="DropoffSuburb" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="DropoffCity" class="control-label">City</label>
+                            <input asp-for="DropoffCity" class="form-control" />
+                            <span asp-validation-for="DropoffCity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="DropoffRegion" class="control-label">Region</label>
+                            <input asp-for="DropoffRegion" class="form-control" />
+                            <span asp-validation-for="DropoffRegion" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="DropoffPostcode" class="control-label">Postcode</label>
+                            <input asp-for="DropoffPostcode" class="form-control" />
+                            <span asp-validation-for="DropoffPostcode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="DropoffCountry" class="control-label">Country</label>
+                            <input asp-for="DropoffCountry" class="form-control" />
+                            <span asp-validation-for="DropoffCountry" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="DropoffDate" class="control-label">Date <span class="required">*</span></label>
+                        <input asp-for="DropoffDate" type="date" class="form-control" />
+                        <span asp-validation-for="DropoffDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="DropoffTime" class="control-label">Time <span class="required">*</span></label>
+                        <input asp-for="DropoffTime" type="time" class="form-control" />
+                        <span asp-validation-for="DropoffTime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div>
+                            <input type="checkbox" asp-for="DropoffCheckbox" checked="checked" onClick="dropoffDifferent()" id="chkDropoff" />
+                            <label asp-for="DropoffCheckbox" class="control-label">Pick-up and Drop-off Location are the same</label>
+                            <span asp-validation-for="DropoffCheckbox" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <hr />
+                    <label>Vehicle Details</label>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PickupName" class="control-label">Car Type <span class="required">*</span></label>
+                        <input asp-for="PickupName" class="form-control" />
+                        <span asp-validation-for="PickupName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Transmission" class="control-label"></label>
+                        <select asp-for="Transmission" class="form-control">
+                            <option>Please select one</option>
+                            <option>Automatic</option>
+                            <option>Manual</option>
+                        </select>
+                        <span asp-validation-for="Transmission" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="Door" class="control-label"># of Doors</label>
+                        <input asp-for="Door" class="form-control" />
+                        <span asp-validation-for="Door" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="Seats" class="control-label"># of Seats</label>
+                        <input asp-for="Seats" class="form-control" />
+                        <span asp-validation-for="Seats" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="LargeBag" class="control-label"># of Large Bags</label>
+                        <input asp-for="LargeBag" class="form-control" />
+                        <span asp-validation-for="LargeBag" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="SmallBag" class="control-label"># of Small Bags</label>
+                        <input asp-for="SmallBag" class="form-control" />
+                        <span asp-validation-for="SmallBag" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="Litres" class="control-label"># of Litres</label>
+                        <input asp-for="Litres" class="form-control" />
+                        <span asp-validation-for="Litres" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="TripId" class="control-label"></label>
+                    <input asp-for="TripId" readonly="readonly" class="form-control" />
+                    <span asp-validation-for="TripId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

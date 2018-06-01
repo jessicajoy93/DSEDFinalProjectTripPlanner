@@ -28,3 +28,11 @@ function addHuman() {
     var num = document.getElementById('human');
 
 }
+
+function dropoffDifferent() {
+    if (document.getElementById('chkDropoff').checked) {
+        $("#dropoffaddress").hide();
+    } else {
+        $("#dropoffaddress").show();
+    }
+};

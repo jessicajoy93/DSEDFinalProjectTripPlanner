@@ -276,8 +276,18 @@ a {
     margin: 0px 10px 0px 10px;
 }
 
+.activityTasks {
+    overflow: hidden;
+    /*background-color: lightcoral;*/
+    margin: 0px 10px 0px 10px;
+}
+
 .image-responsive {
     width: 80%;
     height: auto;
     padding: 10px;
+}
+
+#dropoffaddress {
+    display: none;
 }

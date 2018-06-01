@@ -44,6 +44,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ConfirmationNumber = table.Column<string>(nullable: true),
                     DropoffAddress = table.Column<string>(nullable: true),
+                    DropoffCheckbox = table.Column<bool>(nullable: false),
                     DropoffCity = table.Column<string>(nullable: true),
                     DropoffCountry = table.Column<string>(nullable: true),
                     DropoffDate = table.Column<DateTime>(nullable: false),
@@ -61,7 +62,7 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     PickupSuburb = table.Column<string>(nullable: true),
                     PickupTime = table.Column<DateTime>(nullable: false),
                     SupplierPhoneNumber = table.Column<string>(nullable: true),
-                    SuppplierName = table.Column<string>(nullable: true),
+                    SuppplierName = table.Column<string>(nullable: false),
                     TripId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
