@@ -11,9 +11,10 @@ using System;
 namespace DSEDFinalProjectTripPlanner.Migrations
 {
     [DbContext(typeof(TripContext))]
-    partial class TripContextModelSnapshot : ModelSnapshot
+    [Migration("20180602050652_todo")]
+    partial class todo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,23 +213,6 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.ToTable("Human");
                 });
 
-            modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Item", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("IsChecked");
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.Property<int>("TodoId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Item");
-                });
-
             modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Lodging", b =>
                 {
                     b.Property<int>("Id")
@@ -382,19 +366,6 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Restaurants");
-                });
-
-            modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Todo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Title")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Todo");
                 });
 
             modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Trip", b =>

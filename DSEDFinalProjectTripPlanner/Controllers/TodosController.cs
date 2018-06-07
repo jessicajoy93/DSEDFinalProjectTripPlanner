@@ -12,24 +12,22 @@ using DSEDFinalProjectTripPlanner.Models;
 
 namespace DSEDFinalProjectTripPlanner.Controllers
 {
-    public class TripsController : Controller
+    public class TodosController : Controller
     {
         private readonly TripContext _context;
-        Trip _myTrip = new Trip();
 
-        public TripsController(TripContext context)
+        public TodosController(TripContext context)
         {
-
             _context = context;
         }
 
-        // GET: Trips
+        // GET: Todos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Trips.ToListAsync());
+            return View(await _context.Todo.ToListAsync());
         }
 
-        // GET: Trips/Details/5
+        // GET: Todos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,76 +35,50 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 return NotFound();
             }
 
-            var trip = await _context.Trips
+            var todo = await _context.Todo
                 .SingleOrDefaultAsync(m => m.Id == id);
 
-            TripDTO _tfDto = new TripDTO();
-            Trips _trips = new Trips();
+            TodoDTO _tdDto = new TodoDTO();
+            MyTodo _td = new MyTodo();
 
-            DatabaseManager.TripId = (int)id;
-            DatabaseManager.TripStartDate = trip.StartDate;
+            DatabaseManager.TodoId = (int)id;
+            _td.Id = DatabaseManager.TodoId;
+            _td.Title = todo.Title;
 
-            _trips.Id = DatabaseManager.TripId;
-            _trips.Name = trip.Name;
-            _trips.DestinationCity = trip.DestinationCity;
-            _trips.DestinationCountry = trip.DestinationCountry;
-            _trips.StartDate = trip.StartDate;
-            _trips.FinishDate = trip.FinishDate;
-            _trips.Description = trip.Description;
-            //return _trips;
-
-            _tfDto.AllFlights = _context.Flights.ToList();
-            _tfDto.AllLodgings = _context.Lodgings.ToList();
-            _tfDto.AllHumans = _context.Humans.ToList();
-            _tfDto.AllOtherTransportations = _context.OtherTransportations.ToList();
-            _tfDto.AllRestaurants = _context.Restaurants.ToList();
-            _tfDto.AllActivities = _context.ActivityTasks.ToList();
-            _tfDto.AllCarRentals = _context.CarRentals.ToList();
-
-            var start = trip.StartDate;
-            var end = trip.FinishDate;
-            var tripdates = new List<DateTime>();
-            for (var dt = start; dt <= end; dt = dt.AddDays(1))
-            {
-                tripdates.Add(dt);
-            }
-            _tfDto.GetDates = tripdates;
-
-            if (trip == null)
+            if (todo == null)
             {
                 return NotFound();
             }
-            _tfDto.AllTrips = _trips;
-            return View(_tfDto);
+
+            _tdDto.AllItems = _context.Item.ToList();
+
+            _tdDto.MyTodos = _td;
+            return View(_tdDto);
         }
 
-
-
-        // GET: Trips/Create
+        // GET: Todos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Trips/Create
+        // POST: Todos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate,Description")] Trip trip)
+        public async Task<IActionResult> Create([Bind("Id,Title")] Todo todo)
         {
-
             if (ModelState.IsValid)
             {
-                _context.Add(trip);
-
+                _context.Add(todo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(trip);
+            return View(todo);
         }
 
-        // GET: Trips/Edit/5
+        // GET: Todos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -114,22 +86,22 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 return NotFound();
             }
 
-            var trip = await _context.Trips.SingleOrDefaultAsync(m => m.Id == id);
-            if (trip == null)
+            var todo = await _context.Todo.SingleOrDefaultAsync(m => m.Id == id);
+            if (todo == null)
             {
                 return NotFound();
             }
-            return View(trip);
+            return View(todo);
         }
 
-        // POST: Trips/Edit/5
+        // POST: Todos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DestinationCity,DestinationCountry,StartDate,FinishDate,Description,TripId")] Trip trip)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title")] Todo todo)
         {
-            if (id != trip.Id)
+            if (id != todo.Id)
             {
                 return NotFound();
             }
@@ -138,12 +110,12 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             {
                 try
                 {
-                    _context.Update(trip);
+                    _context.Update(todo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TripExists(trip.Id))
+                    if (!TodoExists(todo.Id))
                     {
                         return NotFound();
                     }
@@ -154,10 +126,10 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(trip);
+            return View(todo);
         }
 
-        // GET: Trips/Delete/5
+        // GET: Todos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -165,31 +137,30 @@ namespace DSEDFinalProjectTripPlanner.Controllers
                 return NotFound();
             }
 
-            var trip = await _context.Trips
+            var todo = await _context.Todo
                 .SingleOrDefaultAsync(m => m.Id == id);
-
-            if (trip == null)
+            if (todo == null)
             {
                 return NotFound();
             }
 
-            return View(trip);
+            return View(todo);
         }
 
-        // POST: Trips/Delete/5
+        // POST: Todos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var trip = await _context.Trips.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Trips.Remove(trip);
+            var todo = await _context.Todo.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Todo.Remove(todo);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TripExists(int id)
+        private bool TodoExists(int id)
         {
-            return _context.Trips.Any(e => e.Id == id);
+            return _context.Todo.Any(e => e.Id == id);
         }
     }
 }

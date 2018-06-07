@@ -11,9 +11,10 @@ using System;
 namespace DSEDFinalProjectTripPlanner.Migrations
 {
     [DbContext(typeof(TripContext))]
-    partial class TripContextModelSnapshot : ModelSnapshot
+    [Migration("20180602051416_todolist")]
+    partial class todolist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -210,23 +211,6 @@ namespace DSEDFinalProjectTripPlanner.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Human");
-                });
-
-            modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Item", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("IsChecked");
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.Property<int>("TodoId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("DSEDFinalProjectTripPlanner.Models.Lodging", b =>

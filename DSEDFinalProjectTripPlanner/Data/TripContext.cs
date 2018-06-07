@@ -28,6 +28,10 @@ namespace DSEDFinalProjectTripPlanner.Data
         {
 
         }
+
+        public DbSet<DSEDFinalProjectTripPlanner.Models.Todo> Todo { get; set; }
+
+        public DbSet<DSEDFinalProjectTripPlanner.Models.Item> Item { get; set; }
     }
 
 

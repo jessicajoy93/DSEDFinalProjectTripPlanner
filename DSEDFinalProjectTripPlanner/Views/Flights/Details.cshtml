@@ -109,7 +109,7 @@
             <h4>Who's Going?</h4>
             @foreach (var human in Model.AllHumans.OrderBy(human => human.TicketNumber).ThenBy(human => human.Id))
             {
-                @if (human.TripId == DatabaseManager.TripId && human.FlightId == DatabaseManager.FlightId)
+                if (human.TripId == DatabaseManager.TripId && human.FlightId == DatabaseManager.FlightId)
                 {
                     <div class="col-md-12">
                         <div class="col-md-3">

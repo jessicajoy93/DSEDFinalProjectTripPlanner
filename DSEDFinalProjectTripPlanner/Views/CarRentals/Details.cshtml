@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <p>
                         <span class="bold">Pick-up</span><br />
                         <span class="checkinout">@DatabaseManager.ArrivalTime(Model.MyCarRental.PickupTime)</span>
@@ -49,7 +49,7 @@
                     </p>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <p>
                         <span class="bold">Drop-off</span><br />
                         <span class="checkinout">
@@ -88,6 +88,17 @@
                             @Html.DisplayFor(model => model.MyCarRental.DropoffRegion)<Text>, </Text>
                             @Html.DisplayFor(model => model.MyCarRental.DropoffCountry)
                         }
+                    </p>
+                </div>
+                <div class="col-md-2">
+                    <p>
+                        <span class="bold">Vehicle Details</span><br />
+                        @Html.DisplayFor(model => model.MyCarRental.PickupName)<br />
+                        @Html.DisplayFor(model => model.MyCarRental.Door) Doors<br />
+                        @Html.DisplayFor(model => model.MyCarRental.Seats) Seats<br />
+                        @Html.DisplayFor(model => model.MyCarRental.LargeBag) Large Bags<br />
+                        @Html.DisplayFor(model => model.MyCarRental.SmallBag) Small Bags<br />
+                        @Html.DisplayFor(model => model.MyCarRental.Litres) Litres<br />
                     </p>
                 </div>
             </div>

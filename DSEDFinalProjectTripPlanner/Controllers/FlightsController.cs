@@ -50,6 +50,8 @@ namespace DSEDFinalProjectTripPlanner.Controllers
             DatabaseManager.CarRentalId = 0;
             DatabaseManager.ActivityTaskId = 0;
 
+            DatabaseManager.Time = flight.DepartureTime;
+
             _flights.Id = DatabaseManager.FlightId;
             _flights.ConfirmationNumber = flight.ConfirmationNumber;
             _flights.Airline = flight.Airline;

@@ -16,6 +16,7 @@ namespace DSEDFinalProjectTripPlanner.Business
         public static int RestaurantId { get; set; } = 0;
         public static int CarRentalId { get; set; } = 0;
         public static int ActivityTaskId { get; set; } = 0;
+        public static int TodoId { get; set; } = 0;
 
         public static int TotalNumDays { get; set; }
         public static int TotalDaysToGo { get; set; }
@@ -26,6 +27,7 @@ namespace DSEDFinalProjectTripPlanner.Business
         public static string Duration { get; set; }
         public static DateTime TripStartDate { get; set; }
         public static int NumOfHumans { get; set; } = 0;
+        public static DateTime Time { get; set; }
 
         public static int NumOfDays(DateTime fd, DateTime sd)
         {

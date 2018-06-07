@@ -1,1 +1,34 @@
-﻿
+﻿@using DSEDFinalProjectTripPlanner.Business
+@model DSEDFinalProjectTripPlanner.DTO.TripDTO
+@{
+    var humans = from h in Model.AllHumans
+                 where h != null
+                 orderby h.TicketNumber, h.Id
+                 select h;
+
+
+}
+
+@foreach (var h in humans)
+{
+
+    <div class="col-md-12">
+        <div class="col-md-3">
+            <p>@Html.DisplayFor(modelItem => h.Fullname)</p>
+        </div>
+        <div class="col-md-3">
+            <p>Frequent Flyer #: @Html.DisplayFor(modelItem => h.FrequentFlyerNumber)</p>
+        </div>
+        <div class="col-md-3">
+            <p>
+                Seat #: @Html.DisplayFor(modelItem => h.TicketNumber)
+            </p>
+        </div>
+        <div class="col-md-3">
+            <p>
+                <a asp-controller="Humans" asp-action="Edit" asp-route-id="@h.Id">Edit</a> |
+                <a asp-controller="Humans" asp-action="Delete" asp-route-id="@h.Id">Delete</a>
+            </p>
+        </div>
+    </div>
+}
